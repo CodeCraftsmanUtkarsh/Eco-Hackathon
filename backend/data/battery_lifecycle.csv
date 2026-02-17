@@ -1,0 +1,9 @@
+batteryType,manufacturingKgCO2_per_kWh,disposalKgCO2_per_kWh,recyclingKgCO2_per_kWh,source,year,notes
+NMC,75,15,10,IVL Swedish Environmental Research Institute,2019,Nickel Manganese Cobalt - Most common in EVs
+NMC-622,70,14,9,IVL Swedish Environmental Research Institute,2021,Improved chemistry version
+NMC-811,73,14,9,IVL Swedish Environmental Research Institute,2021,Higher nickel content
+LFP,65,12,8,Various Academic Studies,2023,Lithium Iron Phosphate - Cheaper safer
+NCA,80,16,11,Argonne National Laboratory GREET Model,2023,Nickel Cobalt Aluminum - Used by Tesla
+Hybrid-NiMH,45,8,6,Argonne National Laboratory,2020,Nickel Metal Hydride - Older hybrid tech
+LTO,90,18,12,Academic Studies,2022,Lithium Titanate - Long cycle life
+Solid-State,85,13,10,Projected Estimates,2024,Future technology - still in development
