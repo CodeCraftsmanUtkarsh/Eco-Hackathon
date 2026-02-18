@@ -72,7 +72,7 @@ const Dashboard = () => {
       const data = await response.json();
       setCarbonResults(data.results);
       setRecommendation(data.recommendation);
-      
+
       // Save comparison data to localStorage and trigger event
       const comparisonData = {
         carbonResults: data.results,
@@ -115,8 +115,8 @@ const Dashboard = () => {
 
   if (loading) {
     return (
-      <div style={{ 
-        minHeight: '100vh', 
+      <div style={{
+        minHeight: '100vh',
         background: 'linear-gradient(135deg, #0F2027 0%, #203A43 50%, #2C5364 100%)',
         display: 'flex',
         alignItems: 'center',
@@ -137,7 +137,7 @@ const Dashboard = () => {
       color: '#FFFFFF'
     }}>
       <main style={{ maxWidth: '1400px', margin: '0 auto', padding: '3rem 4rem' }}>
-        
+
         {/* Input Section */}
         <section style={{
           background: 'rgba(255, 255, 255, 0.05)',
@@ -157,45 +157,64 @@ const Dashboard = () => {
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '2rem' }}>
             <div>
               <label style={{ display: 'block', marginBottom: '0.5rem', color: '#4ECDC4', fontWeight: '600' }}>
-                Daily Miles Driven
+                Daily Miles Driven: <span style={{ color: '#ffffff', fontWeight: '700' }}>{dailyMiles}</span>
               </label>
               <input
-                type="number"
+                type="range"
+                min="5"
+                max="100"
                 value={dailyMiles}
                 onChange={(e) => setDailyMiles(Number(e.target.value))}
                 style={{
                   width: '100%',
-                  padding: '1rem',
-                  background: 'rgba(255, 255, 255, 0.1)',
-                  border: '2px solid rgba(78, 205, 196, 0.3)',
-                  borderRadius: '12px',
-                  color: '#FFFFFF',
-                  fontSize: '1.1rem'
+                  height: '8px',
+                  background: 'rgba(78, 205, 196, 0.2)',
+                  borderRadius: '4px',
+                  outline: 'none',
+                  WebkitAppearance: 'none'
                 }}
               />
-              <small style={{ color: '#B0BEC5' }}>
-                {(dailyMiles * 365).toLocaleString()} miles/year
+              <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '0.5rem', fontSize: '0.8rem', color: '#B0BEC5' }}>
+                <span>5 mi/day</span>
+                <span>100 mi/day</span>
+              </div>
+              <small style={{ color: '#B0BEC5', display: 'block', marginTop: '0.5rem' }}>
+                📊 {(dailyMiles * 365).toLocaleString()} miles/year
+                {dailyMiles <= 15 && " - Light driver"}
+                {dailyMiles > 15 && dailyMiles <= 40 && " - Average driver"}
+                {dailyMiles > 40 && " - Heavy driver"}
               </small>
             </div>
 
             <div>
               <label style={{ display: 'block', marginBottom: '0.5rem', color: '#4ECDC4', fontWeight: '600' }}>
-                Years of Ownership
+                Years of Ownership: <span style={{ color: '#ffffff', fontWeight: '700' }}>{yearsOwnership}</span>
               </label>
               <input
-                type="number"
+                type="range"
+                min="1"
+                max="20"
                 value={yearsOwnership}
                 onChange={(e) => setYearsOwnership(Number(e.target.value))}
                 style={{
                   width: '100%',
-                  padding: '1rem',
-                  background: 'rgba(255, 255, 255, 0.1)',
-                  border: '2px solid rgba(78, 205, 196, 0.3)',
-                  borderRadius: '12px',
-                  color: '#FFFFFF',
-                  fontSize: '1.1rem'
+                  height: '8px',
+                  background: 'rgba(78, 205, 196, 0.2)',
+                  borderRadius: '4px',
+                  outline: 'none',
+                  WebkitAppearance: 'none'
                 }}
               />
+              <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '0.5rem', fontSize: '0.8rem', color: '#B0BEC5' }}>
+                <span>1 year</span>
+                <span>10 years</span>
+                <span>20 years</span>
+              </div>
+              <small style={{ color: '#B0BEC5', display: 'block', marginTop: '0.5rem' }}>
+                🚗 {yearsOwnership <= 3 && " - Short-term ownership"}
+                {yearsOwnership > 3 && yearsOwnership <= 8 && " - Average ownership"}
+                {yearsOwnership > 8 && " - Long-term ownership"}
+              </small>
             </div>
 
             <div>
@@ -233,7 +252,7 @@ const Dashboard = () => {
               {availableVehicles.map(vehicle => {
                 const isSelected = selectedVehicles.includes(vehicle.id);
                 const type = getVehicleType(vehicle);
-                
+
                 return (
                   <button
                     key={vehicle.id}
@@ -267,8 +286,8 @@ const Dashboard = () => {
               disabled={calculating || selectedVehicles.length === 0}
               style={{
                 padding: '1rem 3rem',
-                background: calculating 
-                  ? 'rgba(255, 255, 255, 0.1)' 
+                background: calculating
+                  ? 'rgba(255, 255, 255, 0.1)'
                   : 'linear-gradient(135deg, #4ECDC4, #00D9FF)',
                 color: calculating ? '#B0BEC5' : '#0F2027',
                 border: 'none',
@@ -409,8 +428,8 @@ const Dashboard = () => {
         {/* Compare Button */}
         {carbonResults.length > 0 && (
           <section style={{ textAlign: 'center', marginTop: '2rem' }}>
-            <Link 
-              to="/compare" 
+            <Link
+              to="/compare"
               state={{ carbonResults, recommendation }}
               style={{
                 display: 'inline-block',

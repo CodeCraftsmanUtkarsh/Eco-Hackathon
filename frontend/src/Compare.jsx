@@ -25,7 +25,7 @@ const Compare = () => {
     return (
       <div style={{
         minHeight: '100vh',
-        background: 'linear-gradient(135deg, #0F2027 0%, #203A43 50%, #2C5364 100%)',
+        background: '#0a0a0a',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
@@ -43,14 +43,14 @@ const Compare = () => {
   return (
     <div style={{
       minHeight: '100vh',
-      background: 'linear-gradient(135deg, #0F2027 0%, #203A43 50%, #2C5364 100%)',
+      background: '#0a0a0a',
       fontFamily: "'Inter', sans-serif",
       color: '#FFFFFF'
     }}>
       {/* Header */}
       <header style={{
         padding: '2rem 4rem',
-        background: 'rgba(0, 0, 0, 0.3)',
+        background: 'rgba(26, 26, 26, 0.8)',
         backdropFilter: 'blur(10px)',
         borderBottom: '1px solid rgba(255, 255, 255, 0.1)',
         position: 'sticky',
@@ -82,11 +82,11 @@ const Compare = () => {
       </header>
 
       <main style={{ maxWidth: '1400px', margin: '0 auto', padding: '3rem 4rem' }}>
-        
+
         {/* Best Choice Highlight */}
         {recommendation && (
           <section style={{
-            background: 'linear-gradient(135deg, rgba(78, 205, 196, 0.15), rgba(0, 217, 255, 0.15))',
+            background: 'linear-gradient(135deg, rgba(78, 205, 196, 0.2), rgba(0, 217, 255, 0.2))',
             border: '2px solid #4ECDC4',
             borderRadius: '20px',
             padding: '2.5rem',
@@ -104,7 +104,7 @@ const Compare = () => {
             </div>
 
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '2rem', marginTop: '2rem' }}>
-              <div style={{ background: 'rgba(0, 0, 0, 0.3)', padding: '1.5rem', borderRadius: '12px' }}>
+              <div style={{ background: '#2d2d2d', padding: '1.5rem', borderRadius: '12px', border: '1px solid rgba(78, 205, 196, 0.1)' }}>
                 <div style={{ fontSize: '0.9rem', color: '#B0BEC5', marginBottom: '0.5rem' }}>
                   Total Lifecycle Emissions
                 </div>
@@ -116,7 +116,7 @@ const Compare = () => {
                 </div>
               </div>
 
-              <div style={{ background: 'rgba(0, 0, 0, 0.3)', padding: '1.5rem', borderRadius: '12px' }}>
+              <div style={{ background: '#2d2d2d', padding: '1.5rem', borderRadius: '12px', border: '1px solid rgba(78, 205, 196, 0.1)' }}>
                 <div style={{ fontSize: '0.9rem', color: '#B0BEC5', marginBottom: '1rem' }}>
                   Emissions Breakdown
                 </div>
@@ -141,8 +141,8 @@ const Compare = () => {
 
         {/* Detailed Comparison Cards */}
         <section style={{
-          background: 'rgba(255, 255, 255, 0.05)',
-          border: '1px solid rgba(255, 255, 255, 0.1)',
+          background: '#1a1a1a',
+          border: '1px solid rgba(78, 205, 196, 0.1)',
           borderRadius: '20px',
           padding: '2.5rem',
           marginBottom: '3rem'
@@ -152,8 +152,8 @@ const Compare = () => {
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))', gap: '2rem' }}>
             {carbonResults.map((result, idx) => (
               <div key={result.vehicle.id} style={{
-                background: idx === 0 ? 'linear-gradient(135deg, rgba(78, 205, 196, 0.15), rgba(0, 217, 255, 0.15))' : 'rgba(255, 255, 255, 0.05)',
-                border: idx === 0 ? '2px solid #4ECDC4' : '1px solid rgba(255, 255, 255, 0.1)',
+                background: idx === 0 ? 'linear-gradient(135deg, rgba(78, 205, 196, 0.2), rgba(0, 217, 255, 0.2))' : '#2d2d2d',
+                border: idx === 0 ? '2px solid #4ECDC4' : '1px solid rgba(78, 205, 196, 0.1)',
                 borderRadius: '16px',
                 padding: '2rem',
                 position: 'relative'
@@ -188,7 +188,7 @@ const Compare = () => {
                   <div style={{ fontSize: '0.9rem', color: '#B0BEC5' }}>Total CO2</div>
                 </div>
 
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', padding: '1.5rem', background: 'rgba(0, 0, 0, 0.3)', borderRadius: '12px' }}>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', padding: '1.5rem', background: '#2d2d2d', borderRadius: '12px', border: '1px solid rgba(78, 205, 196, 0.1)' }}>
                   <div style={{ display: 'flex', justifyContent: 'space-between' }}>
                     <span style={{ color: '#B0BEC5' }}>Manufacturing:</span>
                     <span style={{ color: COLORS.manufacturing }}>{(result.emissions.manufacturing / 1000).toFixed(1)}t</span>
@@ -215,8 +215,8 @@ const Compare = () => {
 
         {/* Comparison Charts */}
         <section style={{
-          background: 'rgba(255, 255, 255, 0.05)',
-          border: '1px solid rgba(255, 255, 255, 0.1)',
+          background: '#1a1a1a',
+          border: '1px solid rgba(78, 205, 196, 0.1)',
           borderRadius: '20px',
           padding: '2.5rem'
         }}>
@@ -236,11 +236,11 @@ const Compare = () => {
                   <CartesianGrid strokeDasharray="3 3" stroke="rgba(255, 255, 255, 0.1)" />
                   <XAxis dataKey="name" stroke="#B0BEC5" tick={{ fill: '#B0BEC5' }} />
                   <YAxis stroke="#B0BEC5" tick={{ fill: '#B0BEC5' }} label={{ value: 'kg CO2', angle: -90, position: 'insideLeft', fill: '#B0BEC5' }} />
-                  <Tooltip 
-                    contentStyle={{ 
-                      background: 'rgba(15, 32, 39, 0.95)', 
-                      border: '1px solid rgba(78, 205, 196, 0.5)', 
-                      borderRadius: '8px', 
+                  <Tooltip
+                    contentStyle={{
+                      background: 'rgba(10, 10, 10, 0.95)',
+                      border: '1px solid rgba(78, 205, 196, 0.5)',
+                      borderRadius: '8px',
                       color: '#FFFFFF'
                     }}
                     labelStyle={{ color: '#FFFFFF' }}
@@ -267,7 +267,7 @@ const Compare = () => {
                     cx="50%"
                     cy="50%"
                     labelLine={false}
-                    label={({name, percent}) => `${name}: ${(percent * 100).toFixed(0)}%`}
+                    label={({ name, percent }) => `${name}: ${(percent * 100).toFixed(0)}%`}
                     outerRadius={80}
                     fill="#8884d8"
                     dataKey="value"
@@ -276,11 +276,11 @@ const Compare = () => {
                       <Cell key={`cell-${index}`} fill={['#00D9FF', '#FFE66D', '#FF6B9D'][index % 3]} />
                     ))}
                   </Pie>
-                  <Tooltip 
-                    contentStyle={{ 
-                      background: 'rgba(15, 32, 39, 0.95)', 
-                      border: '1px solid rgba(78, 205, 196, 0.5)', 
-                      borderRadius: '8px', 
+                  <Tooltip
+                    contentStyle={{
+                      background: 'rgba(10, 10, 10, 0.95)',
+                      border: '1px solid rgba(78, 205, 196, 0.5)',
+                      borderRadius: '8px',
                       color: '#FFFFFF'
                     }}
                     labelStyle={{ color: '#FFFFFF' }}

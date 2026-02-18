@@ -10,16 +10,16 @@ const LandingPage = () => {
           <h1 className="hero-title">Carbon-Wise</h1>
           <p className="hero-subtitle">Lifecycle Vehicle Carbon Intelligence Platform</p>
           <p className="hero-description">
-            Make informed decisions about your vehicle's environmental impact. 
+            Make informed decisions about your vehicle's environmental impact.
             Compare carbon footprints, analyze emissions, and discover sustainable alternatives.
           </p>
           <div className="hero-buttons">
             <Link to="/dashboard" className="btn btn-primary">
               Get Started
             </Link>
-            <button className="btn btn-secondary">
+            <Link to="/insights" className="btn btn-secondary">
               Learn More
-            </button>
+            </Link>
           </div>
         </div>
         <div className="hero-image">

@@ -1,0 +1,21 @@
+year,make,model,trany,drive,cylinders,displ,fuelType1,city08,highway08,comb08,co2TailpipeGpm,VClass,batteryCapacity,efficiencyMPGe
+2024,Tesla,Model 3,A1,FWD,0,0.0,Electricity,141,123,132,0,Compact Cars,60,4.2
+2024,Tesla,Model Y,A1,AWD,0,0.0,Electricity,129,112,121,0,Small SUV,75,3.8
+2024,Nissan,Leaf,A1,FWD,0,0.0,Electricity,123,99,111,0,Compact Cars,62,3.8
+2024,Chevrolet,Bolt EV,A1,FWD,0,0.0,Electricity,127,108,120,0,Compact Cars,65,4.0
+2024,Toyota,Prius,CVT,FWD,4,1.8,Gasoline/Hybrid,57,56,56,158,Midsize Cars,8.8,
+2024,Toyota,RAV4 Hybrid,CVT,AWD,4,2.5,Gasoline/Hybrid,41,38,40,222,Small SUV,18.1,
+2024,Honda,Civic,CVT,FWD,4,2.0,Gasoline,32,42,35,254,Compact Cars,0,
+2024,Honda,Accord,CVT,FWD,4,1.5,Gasoline,30,38,33,269,Midsize Cars,0,
+2024,Ford,F-150,A10,4WD,6,3.5,Gasoline,18,24,20,445,Standard Pickup Trucks,0,
+2024,BMW,330i,A8,RWD,4,2.0,Gasoline,27,36,30,296,Compact Cars,0,
+2024,Hyundai,Ioniq 5,A1,AWD,0,0.0,Electricity,114,94,105,0,Small SUV,77,3.5
+2024,Ford,Mustang Mach-E,A1,AWD,0,0.0,Electricity,93,90,91,0,Small SUV,88,3.0
+2024,Volkswagen,ID.4,A1,AWD,0,0.0,Electricity,104,93,99,0,Small SUV,82,3.3
+2023,Toyota,Camry,A8,FWD,4,2.5,Gasoline,28,39,32,277,Midsize Cars,0,
+2023,Toyota,Corolla,CVT,FWD,4,1.8,Gasoline,31,40,34,261,Compact Cars,0,
+2023,Honda,CR-V,CVT,AWD,4,1.5,Gasoline,27,32,29,306,Small SUV,0,
+2023,Mazda,CX-5,A6,AWD,4,2.5,Gasoline,24,30,27,329,Small SUV,0,
+2023,Chevrolet,Silverado,A10,4WD,8,5.3,Gasoline,16,20,17,523,Standard Pickup Trucks,0,
+2023,RAM,1500,A8,4WD,8,5.7,Gasoline,15,21,17,523,Standard Pickup Trucks,0,
+2023,Subaru,Outback,CVT,AWD,4,2.5,Gasoline,26,33,29,306,Small Station Wagons,0,

@@ -5,8 +5,9 @@
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  color: #333;
+  color: #ffffff;
   line-height: 1.6;
+  background: #0a0a0a;
 }
 
 .container {
@@ -17,7 +18,7 @@
 
 /* Hero Section */
 .hero-section {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
   color: white;
   padding: 80px 40px;
   display: flex;
@@ -35,7 +36,7 @@
   font-size: 3.5rem;
   font-weight: 700;
   margin-bottom: 20px;
-  background: linear-gradient(45deg, #fff, #e0f7fa);
+  background: linear-gradient(45deg, #00d9ff, #4ecdc4);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -74,25 +75,25 @@
 }
 
 .btn-primary {
-  background: #4CAF50;
-  color: white;
+  background: linear-gradient(135deg, #4ecdc4, #00d9ff);
+  color: #0a0a0a;
 }
 
 .btn-primary:hover {
-  background: #45a049;
+  background: linear-gradient(135deg, #45b7aa, #00c4e6);
   transform: translateY(-2px);
-  box-shadow: 0 10px 20px rgba(76, 175, 80, 0.3);
+  box-shadow: 0 10px 20px rgba(78, 205, 196, 0.3);
 }
 
 .btn-secondary {
   background: transparent;
-  color: white;
-  border: 2px solid white;
+  color: #4ecdc4;
+  border: 2px solid #4ecdc4;
 }
 
 .btn-secondary:hover {
-  background: white;
-  color: #667eea;
+  background: #4ecdc4;
+  color: #0a0a0a;
   transform: translateY(-2px);
 }
 
@@ -114,7 +115,9 @@
   height: 300px;
 }
 
-.leaf-icon, .car-icon, .chart-icon {
+.leaf-icon,
+.car-icon,
+.chart-icon {
   position: absolute;
   font-size: 4rem;
   animation: float 3s ease-in-out infinite;
@@ -140,21 +143,28 @@
 }
 
 @keyframes float {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-20px); }
+
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-20px);
+  }
 }
 
 /* Features Section */
 .features-section {
   padding: 100px 0;
-  background: #f8f9fa;
+  background: #1a1a1a;
 }
 
 .section-title {
   text-align: center;
   font-size: 2.5rem;
   margin-bottom: 60px;
-  color: #333;
+  color: #ffffff;
   font-weight: 700;
 }
 
@@ -167,17 +177,19 @@
 }
 
 .feature-card {
-  background: white;
+  background: #2d2d2d;
   padding: 40px 30px;
   border-radius: 15px;
   text-align: center;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid rgba(78, 205, 196, 0.1);
 }
 
 .feature-card:hover {
   transform: translateY(-10px);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+  border-color: rgba(78, 205, 196, 0.3);
 }
 
 .feature-icon {
@@ -188,18 +200,18 @@
 .feature-card h3 {
   font-size: 1.5rem;
   margin-bottom: 15px;
-  color: #333;
+  color: #4ecdc4;
 }
 
 .feature-card p {
-  color: #666;
+  color: #b0b0b0;
   line-height: 1.6;
 }
 
 /* CTA Section */
 .cta-section {
   padding: 100px 0;
-  background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%);
+  background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
   color: white;
   text-align: center;
 }
@@ -217,7 +229,7 @@
 
 /* Footer */
 .landing-footer {
-  background: #333;
+  background: #000000;
   color: white;
   padding: 40px 0;
   text-align: center;
