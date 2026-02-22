@@ -23,13 +23,13 @@ id,year,make,model,vehicleClass,fuelType,isElectric,isHybrid,combinedMPG,co2Emis
 2024-BMW-i4,2024,BMW,i4,Midsize Cars,EV,true,false,0,0,80.7,3.6
 2024-BMW-iX1,2024,BMW,iX1,Small SUV,EV,true,false,0,0,63.1,3.7
 2024-Volvo-EX40,2024,Volvo,EX40,Small SUV,EV,true,false,0,0,75.0,3.8
-2024-Toyota-CamryHybrid,2024,Toyota,Camry Hybrid,Midsize Cars,Hybrid,true,true,52,170,0,0
-2024-Honda-CityHybrid,2024,Honda,City Hybrid,Midsize Cars,Hybrid,true,true,50,180,0,0
-2024-Maruti-GrandVitaraHybrid,2024,Maruti Suzuki,Grand Vitara Hybrid,Small SUV,Hybrid,true,true,55,165,0,0
-2024-Toyota-InnovaHyCross,2024,Toyota,Innova HyCross Hybrid,Midsize SUV,Hybrid,true,true,48,185,0,0
-2024-Hyundai-IoniqHybrid,2024,Hyundai,Ioniq Hybrid,Midsize Cars,Hybrid,true,true,58,160,0,0
-2024-Toyota-Prius,2024,Toyota,Prius,Midsize Cars,Hybrid,true,true,56,158,8.8,0
-2024-Toyota-RAV4 Hybrid,2024,Toyota,RAV4 Hybrid,Small SUV,Hybrid,true,true,40,222,18.1,0
+2024-Toyota-CamryHybrid,2024,Toyota,Camry Hybrid,Midsize Cars,Hybrid,false,true,52,170,0,0
+2024-Honda-CityHybrid,2024,Honda,City Hybrid,Midsize Cars,Hybrid,false,true,50,180,0,0
+2024-Maruti-GrandVitaraHybrid,2024,Maruti Suzuki,Grand Vitara Hybrid,Small SUV,Hybrid,false,true,55,165,0,0
+2024-Toyota-InnovaHyCross,2024,Toyota,Innova HyCross Hybrid,Midsize SUV,Hybrid,false,true,48,185,0,0
+2024-Hyundai-IoniqHybrid,2024,Hyundai,Ioniq Hybrid,Midsize Cars,Hybrid,false,true,58,160,0,0
+2024-Toyota-Prius,2024,Toyota,Prius,Midsize Cars,Hybrid,false,true,56,158,8.8,0
+2024-Toyota-RAV4 Hybrid,2024,Toyota,RAV4 Hybrid,Small SUV,Hybrid,false,true,40,222,18.1,0
 2024-Maruti-Swift,2024,Maruti Suzuki,Swift,Compact Cars,Petrol,false,false,40,220,0,0
 2024-Maruti-Baleno,2024,Maruti Suzuki,Baleno,Midsize Cars,Petrol,false,false,38,230,0,0
 2024-Hyundai-Creta,2024,Hyundai,Creta,Small SUV,Petrol,false,false,32,280,0,0
@@ -61,5 +61,5 @@ id,year,make,model,vehicleClass,fuelType,isElectric,isHybrid,combinedMPG,co2Emis
 2024-Jeep-Compass,2024,Jeep,Compass,Small SUV,Diesel,false,false,29,300,0,0
 2024-Volkswagen-Taigun,2024,Volkswagen,Taigun,Small SUV,Petrol,false,false,33,265,0,0
 2024-Skoda-Kushaq,2024,Skoda,Kushaq,Small SUV,Petrol,false,false,32,275,0,0
-2024-Toyota-UrbanCruiser,2024,Toyota,Urban Cruiser,Small SUV,Hybrid,true,true,54,170,0,0
-2024-Honda-CRVHybrid,2024,Honda,CRV Hybrid,Small SUV,Hybrid,true,true,46,190,0,0
+2024-Toyota-UrbanCruiser,2024,Toyota,Urban Cruiser,Small SUV,Hybrid,false,true,54,170,0,0
+2024-Honda-CRVHybrid,2024,Honda,CRV Hybrid,Small SUV,Hybrid,false,true,46,190,0,0

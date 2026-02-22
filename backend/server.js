@@ -178,7 +178,12 @@ function calculateLifecycle(vehicle, dailyMiles, yearsOwnership, region) {
   }
 
   let operationalCO2 = 0;
-  if (vehicle.isElectric) {
+  if (vehicle.isHybrid) {
+    // Hybrid vehicles: Use fuel-based calculation with improved efficiency
+    const gallonsUsed = totalMiles / vehicle.combinedMPG;
+    operationalCO2 = gallonsUsed * 8.89;
+  } else if (vehicle.isElectric) {
+    // Pure EV vehicles: Use grid electricity calculation
     const gridFactor = gridEmissionFactors[region] || gridEmissionFactors['US Average'] || gridEmissionFactors['National'];
     if (!gridFactor || !gridFactor.gCO2_per_kWh) {
       console.error(`Grid factor not found for region: ${region}`);
@@ -195,6 +200,7 @@ function calculateLifecycle(vehicle, dailyMiles, yearsOwnership, region) {
     const kWhUsed = totalMiles / vehicle.efficiencyMilesPerKWh;
     operationalCO2 = kWhUsed * (gridFactor.gCO2_per_kWh / 1000);
   } else {
+    // ICE vehicles: Use fuel-based calculation
     const gallonsUsed = totalMiles / vehicle.combinedMPG;
     operationalCO2 = gallonsUsed * 8.89;
   }
