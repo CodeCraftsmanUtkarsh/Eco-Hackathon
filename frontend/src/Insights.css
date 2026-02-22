@@ -1,0 +1,250 @@
+/* Insight Cards */
+.insight-card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  padding: 2rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.insight-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(78, 205, 196, 0.2);
+}
+
+.insight-header h3 {
+  margin: 0 0 1rem 0;
+  font-size: 1.3rem;
+  color: #4ECDC4;
+  font-weight: 600;
+}
+
+.insight-card p {
+  margin-bottom: 1.5rem;
+  color: #B0BEC5;
+  line-height: 1.6;
+}
+
+.insight-metric {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 12px;
+}
+
+.metric-value {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #4ECDC4;
+  margin-bottom: 0.5rem;
+}
+
+.metric-label {
+  font-size: 0.9rem;
+  color: #B0BEC5;
+  text-align: center;
+}
+
+/* Region Cards */
+.region-card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 1.5rem;
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.region-card:hover {
+  transform: translateY(-3px);
+}
+
+.region-card h4 {
+  margin: 0 0 1rem 0;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.region-card.california h4 {
+  color: #4ECDC4;
+}
+
+.region-card.texas h4 {
+  color: #FFE66D;
+}
+
+.region-card.newyork h4 {
+  color: #00D9FF;
+}
+
+.region-card.florida h4 {
+  color: #FF6B9D;
+}
+
+.grid-factor {
+  margin-bottom: 1rem;
+}
+
+.factor-value {
+  display: block;
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.region-card.california .factor-value {
+  color: #4ECDC4;
+}
+
+.region-card.texas .factor-value {
+  color: #FFE66D;
+}
+
+.region-card.newyork .factor-value {
+  color: #00D9FF;
+}
+
+.region-card.florida .factor-value {
+  color: #FF6B9D;
+}
+
+.factor-unit {
+  font-size: 0.9rem;
+  color: #B0BEC5;
+}
+
+.region-card p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #B0BEC5;
+}
+
+/* Vehicle Type Cards */
+.vehicle-type-card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  padding: 2rem;
+  transition: transform 0.3s ease;
+}
+
+.vehicle-type-card:hover {
+  transform: translateY(-5px);
+}
+
+.vehicle-type-card.ev {
+  border-left: 4px solid #00D9FF;
+}
+
+.vehicle-type-card.hybrid {
+  border-left: 4px solid #FFE66D;
+}
+
+.vehicle-type-card.ice {
+  border-left: 4px solid #FF6B9D;
+}
+
+.vehicle-type-card h3 {
+  margin: 0 0 1.5rem 0;
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+
+.vehicle-type-card.ev h3 {
+  color: #00D9FF;
+}
+
+.vehicle-type-card.hybrid h3 {
+  color: #FFE66D;
+}
+
+.vehicle-type-card.ice h3 {
+  color: #FF6B9D;
+}
+
+.emissions-breakdown {
+  margin-bottom: 1.5rem;
+}
+
+.emission-item {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.8rem;
+  padding: 0.5rem;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 8px;
+}
+
+.emission-item span:first-child {
+  color: #B0BEC5;
+}
+
+.emission-item span:last-child {
+  font-weight: 600;
+}
+
+.vehicle-type-card.ev .emission-item span:last-child {
+  color: #00D9FF;
+}
+
+.vehicle-type-card.hybrid .emission-item span:last-child {
+  color: #FFE66D;
+}
+
+.vehicle-type-card.ice .emission-item span:last-child {
+  color: #FF6B9D;
+}
+
+.vehicle-note {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #B0BEC5;
+  font-style: italic;
+}
+
+/* Recommendations */
+.recommendation-item {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 1.5rem;
+  transition: transform 0.3s ease;
+}
+
+.recommendation-item:hover {
+  transform: translateY(-3px);
+  border-color: rgba(78, 205, 196, 0.3);
+}
+
+.recommendation-item h4 {
+  margin: 0 0 1rem 0;
+  font-size: 1.1rem;
+  color: #4ECDC4;
+  font-weight: 600;
+}
+
+.recommendation-item p {
+  margin: 0;
+  color: #B0BEC5;
+  line-height: 1.6;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .insight-card,
+  .region-card,
+  .vehicle-type-card,
+  .recommendation-item {
+    margin-bottom: 1rem;
+  }
+  
+  .metric-value {
+    font-size: 1.5rem;
+  }
+  
+  .factor-value {
+    font-size: 1.5rem;
+  }
+}

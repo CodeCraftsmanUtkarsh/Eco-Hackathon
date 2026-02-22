@@ -1,14 +1,32 @@
 region,state,gCO2_per_kWh,year,source,description
-CAMX,California,200,2022,EPA eGRID,California ISO - High renewable penetration
-ERCT,Texas,420,2022,EPA eGRID,ERCOT - Coal and natural gas heavy
-NYCW,New York,280,2022,EPA eGRID,NYC Westchester - Mixed sources
-NWPP,Washington,120,2022,EPA eGRID,Northwest Power Pool - Hydro dominant
-FRCC,Florida,390,2022,EPA eGRID,Florida Reliability Coordinating Council
-MROW,Midwest,450,2022,EPA eGRID,Midwest Reliability Organization West - Coal heavy
-NEWE,New England,270,2022,EPA eGRID,New England - Natural gas and nuclear
-RFCE,Mid-Atlantic,350,2022,EPA eGRID,RFC East - Mixed coal and nuclear
-SPSO,Southern,400,2022,EPA eGRID,Southern Company Services - Coal heavy
-SRMW,Upper Midwest,520,2022,EPA eGRID,SERC Midwest - Very coal heavy
-US,National,390,2022,EPA eGRID,US National Average
-Coal-heavy region,Generic,600,2022,Estimate,Hypothetical coal-dependent region
-Renewable-heavy region,Generic,100,2022,Estimate,Hypothetical renewable-heavy region (like Iceland)
+Northern Grid,Northern Grid,820,2024,Central Electricity Authority (CEA),Northern Regional Load Despatch Centre covering Delhi, Punjab, Haryana, Rajasthan, Uttar Pradesh, Uttarakhand, Jammu & Kashmir, Ladakh, Chandigarh, Himachal Pradesh
+Western Grid,Western Grid,950,2024,Central Electricity Authority (CEA),Western Regional Load Despatch Centre covering Gujarat, Madhya Pradesh, Chhattisgarh, Goa, Maharashtra, Dadra & Nagar Haveli and Daman & Diu
+Eastern Grid,Eastern Grid,780,2024,Central Electricity Authority (CEA),Eastern Regional Load Despatch Centre covering West Bengal, Odisha, Bihar, Jharkhand, Sikkim
+Southern Grid,Southern Grid,620,2024,Central Electricity Authority (CEA),Southern Regional Load Despatch Centre covering Andhra Pradesh, Telangana, Karnataka, Kerala, Tamil Nadu, Puducherry
+North Eastern Grid,North Eastern Grid,180,2024,Central Electricity Authority (CEA),North Eastern Regional Load Despatch Centre covering Assam, Arunachal Pradesh, Manipur, Meghalaya, Mizoram, Nagaland, Tripura
+Delhi,Delhi,850,2024,Delhi Electricity Regulatory Commission,Delhi's electricity grid with high fossil fuel dependence
+Maharashtra,Maharashtra,920,2024,Maharashtra State Electricity Distribution Company,Maharashtra's grid with coal-heavy generation
+Karnataka,Karnataka,580,2024,Karnataka Power Corporation,Karnataka with good renewable mix including wind and solar
+Tamil Nadu,Tamil Nadu,650,2024,Tamil Nadu Generation and Distribution Corporation,Tamil Nadu with significant wind power
+Gujarat,Gujarat,880,2024,Gujarat Electricity Regulatory Commission,Gujarat with high solar penetration but also coal
+Rajasthan,Rajasthan,820,2024,Rajasthan Electricity Regulatory Commission,Rajasthan with solar power but desert conditions
+Madhya Pradesh,Madhya Pradesh,980,2024,Madhya Pradesh Electricity Regulatory Commission,Madhya Pradesh with coal-heavy generation
+Uttar Pradesh,Uttar Pradesh,850,2024,Uttar Pradesh Power Corporation,Uttar Pradesh with mixed coal and gas generation
+West Bengal,West Bengal,780,2024,West Bengal State Electricity Distribution Company,West Bengal with coal-based generation
+Andhra Pradesh,Andhra Pradesh,580,2024,Andhra Pradesh State Financial Corporation,Andhra Pradesh with growing renewable energy
+Telangana,Telangana,620,2024,Telangana State Electricity Regulatory Commission,Telangana with nuclear and coal mix
+Kerala,Kerala,550,2024,Kerala State Electricity Board,Kerala with hydro power dominance
+Punjab,Punjab,750,2024,Punjab State Power Corporation,Punjab with thermal power plants
+Haryana,Haryana,800,2024,Haryana Power Utilities,Haryana with coal and gas based generation
+Bihar,Bihar,720,2024,Bihar State Electricity Board,Bihar with coal-based power generation
+Odisha,Odisha,690,2024,Odisha Electricity Regulatory Commission,Odisha with coal and some renewable energy
+Jharkhand,Jharkhand,850,2024,Jharkhand State Electricity Board,Jharkhand with coal-based generation
+Chhattisgarh,Chhattisgarh,930,2024,Chhattisgarh State Power Distribution Company,Chhattisgarh with coal power dominance
+Goa,Goa,680,2024,Goa Electricity Department,Goa with imported power from neighboring states
+Himachal Pradesh,Himachal Pradesh,120,2024,Himachal Pradesh State Electricity Board,Himachal Pradesh with hydro power dominance
+Uttarakhand,Uttarakhand,180,2024,Uttarakhand Power Corporation,Uttarakhand with hydro power generation
+Jammu and Kashmir,Jammu and Kashmir,250,2024,Jammu and Kashmir Power Development Corporation,Jammu and Kashmir with hydro and thermal mix
+Assam,Assam,420,2024,Assam Power Distribution Company,Assam with thermal and some hydro power
+National Average,National Average,720,2024,Central Electricity Authority,India's national average grid emission factor
+Coal-heavy region,Coal-heavy region,950,2024,Estimate,Hypothetical region with high coal dependence
+Renewable-heavy region,Renewable-heavy region,150,2024,Estimate,Hypothetical region with high renewable energy mix
