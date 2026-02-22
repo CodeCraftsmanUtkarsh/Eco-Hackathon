@@ -1,21 +1,65 @@
-year,make,model,trany,drive,cylinders,displ,fuelType1,city08,highway08,comb08,co2TailpipeGpm,VClass,batteryCapacity,efficiencyMPGe
-2024,Tesla,Model 3,A1,FWD,0,0.0,Electricity,141,123,132,0,Compact Cars,60,4.2
-2024,Tesla,Model Y,A1,AWD,0,0.0,Electricity,129,112,121,0,Small SUV,75,3.8
-2024,Nissan,Leaf,A1,FWD,0,0.0,Electricity,123,99,111,0,Compact Cars,62,3.8
-2024,Chevrolet,Bolt EV,A1,FWD,0,0.0,Electricity,127,108,120,0,Compact Cars,65,4.0
-2024,Toyota,Prius,CVT,FWD,4,1.8,Gasoline/Hybrid,57,56,56,158,Midsize Cars,8.8,
-2024,Toyota,RAV4 Hybrid,CVT,AWD,4,2.5,Gasoline/Hybrid,41,38,40,222,Small SUV,18.1,
-2024,Honda,Civic,CVT,FWD,4,2.0,Gasoline,32,42,35,254,Compact Cars,0,
-2024,Honda,Accord,CVT,FWD,4,1.5,Gasoline,30,38,33,269,Midsize Cars,0,
-2024,Ford,F-150,A10,4WD,6,3.5,Gasoline,18,24,20,445,Standard Pickup Trucks,0,
-2024,BMW,330i,A8,RWD,4,2.0,Gasoline,27,36,30,296,Compact Cars,0,
-2024,Hyundai,Ioniq 5,A1,AWD,0,0.0,Electricity,114,94,105,0,Small SUV,77,3.5
-2024,Ford,Mustang Mach-E,A1,AWD,0,0.0,Electricity,93,90,91,0,Small SUV,88,3.0
-2024,Volkswagen,ID.4,A1,AWD,0,0.0,Electricity,104,93,99,0,Small SUV,82,3.3
-2023,Toyota,Camry,A8,FWD,4,2.5,Gasoline,28,39,32,277,Midsize Cars,0,
-2023,Toyota,Corolla,CVT,FWD,4,1.8,Gasoline,31,40,34,261,Compact Cars,0,
-2023,Honda,CR-V,CVT,AWD,4,1.5,Gasoline,27,32,29,306,Small SUV,0,
-2023,Mazda,CX-5,A6,AWD,4,2.5,Gasoline,24,30,27,329,Small SUV,0,
-2023,Chevrolet,Silverado,A10,4WD,8,5.3,Gasoline,16,20,17,523,Standard Pickup Trucks,0,
-2023,RAM,1500,A8,4WD,8,5.7,Gasoline,15,21,17,523,Standard Pickup Trucks,0,
-2023,Subaru,Outback,CVT,AWD,4,2.5,Gasoline,26,33,29,306,Small Station Wagons,0,
+id,year,make,model,vehicleClass,fuelType,isElectric,isHybrid,combinedMPG,co2EmissionsGramPerMile,batteryCapacity,efficiencyMilesPerKWh
+2024-Tata-PunchEV,2024,Tata,Punch EV,Compact Cars,EV,true,false,112,0,25,4.0
+2024-Tata-NexonEV,2024,Tata,Nexon EV,Small SUV,EV,true,false,108,0,40,3.9
+2024-Tata-TiagoEV,2024,Tata,Tiago EV,Compact Cars,EV,true,false,115,0,24,4.1
+2024-MG-CometEV,2024,MG,Comet EV,Compact Cars,EV,true,false,120,0,17.3,4.5
+2024-Mahindra-XUV400EV,2024,Mahindra,XUV400 EV,Small SUV,EV,true,false,105,0,39.4,3.7
+2024-Kia-EV6,2024,Kia,EV6,Small SUV,EV,true,false,98,0,77.4,3.5
+2024-Hyundai-KonaElectric,2024,Hyundai,Kona Electric,Small SUV,EV,true,false,104,0,39.2,3.8
+2024-BYD-Atto3,2024,BYD,Atto 3,Small SUV,EV,true,false,101,0,60.5,3.6
+2024-Maruti Suzuki-e Vitara,2024,Maruti Suzuki,e Vitara,Small SUV,EV,true,false,0,0,35.5,4.2
+2024-Mahindra-BE 6,2024,Mahindra,BE 6,Midsize Cars,EV,true,false,0,0,60.5,3.8
+2024-MG-Windsor EV,2024,MG,Windsor EV,Midsize Cars,EV,true,false,0,0,38.3,4.5
+2024-Tata-Harrier EV,2024,Tata,Harrier EV,Midsize SUV,EV,true,false,0,0,39.5,3.9
+2024-Mahindra-XEV 9e,2024,Mahindra,XEV 9e,Midsize SUV,EV,true,false,0,0,59.5,3.7
+2024-Mahindra-XEV 9S,2024,Mahindra,XEV 9S,Midsize SUV,EV,true,false,0,0,71.6,3.6
+2024-Tata-Curvv EV,2024,Tata,Curvv EV,Small SUV,EV,true,false,0,0,45.0,4.2
+2024-BYD-Seal,2024,BYD,Seal,Midsize Cars,EV,true,false,0,0,82.6,3.7
+2024-BYD-Sealion 7,2024,BYD,Sealion 7,Midsize SUV,EV,true,false,0,0,91.3,3.5
+2024-Mahindra-BE 6 FE,2024,Mahindra,BE 6 FE,Midsize Cars,EV,true,false,0,0,60.5,3.9
+2024-Tesla-Model Y,2024,Tesla,Model Y,Small SUV,EV,true,false,0,0,75.0,4.0
+2024-Volvo-EX30,2024,Volvo,EX30,Compact Cars,EV,true,false,0,0,64.0,3.8
+2024-Hyundai-Ioniq 5,2024,Hyundai,Ioniq 5,Midsize Cars,EV,true,false,0,0,58.0,4.1
+2024-BMW-i4,2024,BMW,i4,Midsize Cars,EV,true,false,0,0,80.7,3.6
+2024-BMW-iX1,2024,BMW,iX1,Small SUV,EV,true,false,0,0,63.1,3.7
+2024-Volvo-EX40,2024,Volvo,EX40,Small SUV,EV,true,false,0,0,75.0,3.8
+2024-Toyota-CamryHybrid,2024,Toyota,Camry Hybrid,Midsize Cars,Hybrid,true,true,52,170,0,0
+2024-Honda-CityHybrid,2024,Honda,City Hybrid,Midsize Cars,Hybrid,true,true,50,180,0,0
+2024-Maruti-GrandVitaraHybrid,2024,Maruti Suzuki,Grand Vitara Hybrid,Small SUV,Hybrid,true,true,55,165,0,0
+2024-Toyota-InnovaHyCross,2024,Toyota,Innova HyCross Hybrid,Midsize SUV,Hybrid,true,true,48,185,0,0
+2024-Hyundai-IoniqHybrid,2024,Hyundai,Ioniq Hybrid,Midsize Cars,Hybrid,true,true,58,160,0,0
+2024-Toyota-Prius,2024,Toyota,Prius,Midsize Cars,Hybrid,true,true,56,158,8.8,0
+2024-Toyota-RAV4 Hybrid,2024,Toyota,RAV4 Hybrid,Small SUV,Hybrid,true,true,40,222,18.1,0
+2024-Maruti-Swift,2024,Maruti Suzuki,Swift,Compact Cars,Petrol,false,false,40,220,0,0
+2024-Maruti-Baleno,2024,Maruti Suzuki,Baleno,Midsize Cars,Petrol,false,false,38,230,0,0
+2024-Hyundai-Creta,2024,Hyundai,Creta,Small SUV,Petrol,false,false,32,280,0,0
+2024-Hyundai-Venue,2024,Hyundai,Venue,Small SUV,Petrol,false,false,36,240,0,0
+2024-Tata-Nexon,2024,Tata,Nexon,Small SUV,Petrol,false,false,34,260,0,0
+2024-Mahindra-Thar,2024,Mahindra,Thar,Small SUV,Diesel,false,false,28,310,0,0
+2024-Mahindra-ScorpioN,2024,Mahindra,Scorpio N,Midsize SUV,Diesel,false,false,26,330,0,0
+2024-Toyota-Fortuner,2024,Toyota,Fortuner,Midsize SUV,Diesel,false,false,22,400,0,0
+2024-Toyota-InnovaCrysta,2024,Toyota,Innova Crysta,Midsize SUV,Diesel,false,false,25,350,0,0
+2024-Honda-Amaze,2024,Honda,Amaze,Midsize Cars,Petrol,false,false,37,235,0,0
+2024-Honda-City,2024,Honda,City,Midsize Cars,Petrol,false,false,35,250,0,0
+2024-Hyundai-Verna,2024,Hyundai,Verna,Midsize Cars,Petrol,false,false,36,245,0,0
+2024-Volkswagen-Virtus,2024,Volkswagen,Virtus,Midsize Cars,Petrol,false,false,34,260,0,0
+2024-Skoda-Slavia,2024,Skoda,Slavia,Midsize Cars,Petrol,false,false,33,265,0,0
+2024-Renault-Kwid,2024,Renault,Kwid,Compact Cars,Petrol,false,false,42,210,0,0
+2024-Tata-Punch,2024,Tata,Punch,Small SUV,Petrol,false,false,38,225,0,0
+2024-Kia-Seltos,2024,Kia,Seltos,Small SUV,Petrol,false,false,31,290,0,0
+2024-Kia-Sonet,2024,Kia,Sonet,Small SUV,Diesel,false,false,35,255,0,0
+2024-MG-Hector,2024,MG,Hector,Small SUV,Petrol,false,false,30,300,0,0
+2024-Nissan-Magnite,2024,Nissan,Magnite,Small SUV,Petrol,false,false,37,235,0,0
+2024-Tata-Altroz,2024,Tata,Altroz,Compact Cars,Petrol,false,false,39,225,0,0
+2024-Tata-Harrier,2024,Tata,Harrier,Small SUV,Diesel,false,false,27,320,0,0
+2024-Mahindra-Bolero,2024,Mahindra,Bolero,Small SUV,Diesel,false,false,24,360,0,0
+2024-Hyundai-i20,2024,Hyundai,i20,Compact Cars,Petrol,false,false,39,220,0,0
+2024-Maruti-Dzire,2024,Maruti Suzuki,Dzire,Midsize Cars,Petrol,false,false,41,215,0,0
+2024-Maruti-AltoK10,2024,Maruti Suzuki,Alto K10,Compact Cars,Petrol,false,false,44,200,0,0
+2024-Toyota-Glanza,2024,Toyota,Glanza,Compact Cars,Petrol,false,false,40,215,0,0
+2024-Citroen-C3,2024,Citroen,C3,Compact Cars,Petrol,false,false,36,240,0,0
+2024-Jeep-Compass,2024,Jeep,Compass,Small SUV,Diesel,false,false,29,300,0,0
+2024-Volkswagen-Taigun,2024,Volkswagen,Taigun,Small SUV,Petrol,false,false,33,265,0,0
+2024-Skoda-Kushaq,2024,Skoda,Kushaq,Small SUV,Petrol,false,false,32,275,0,0
+2024-Toyota-UrbanCruiser,2024,Toyota,Urban Cruiser,Small SUV,Hybrid,true,true,54,170,0,0
+2024-Honda-CRVHybrid,2024,Honda,CRV Hybrid,Small SUV,Hybrid,true,true,46,190,0,0

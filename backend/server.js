@@ -20,7 +20,6 @@ function loadEPAData() {
   const epaFile = path.join(__dirname, 'data/vehicles.csv');
 
   if (!fs.existsSync(epaFile)) {
-    console.warn('⚠️  EPA dataset not found. Using sample data.');
     loadSampleData();
     return;
   }
@@ -30,44 +29,29 @@ function loadEPAData() {
   fs.createReadStream(epaFile)
     .pipe(csv())
     .on('data', (row) => {
-      if (row.year && row.make && row.model && row.comb08) {
-        const isElectric = row.fuelType1 === 'Electricity';
-        const isHybrid = row.fuelType1 && (row.fuelType1.toLowerCase().includes('hybrid') || row.fuelType1.includes('/'));
-
-        let batteryCapacity = parseFloat(row.batteryCapacity) || 0;
-        if (isElectric && !batteryCapacity) {
-          batteryCapacity = row.VClass === 'Compact Cars' ? 60 : row.VClass === 'Small SUV' ? 75 : 70;
-        } else if (isHybrid && !batteryCapacity) {
-          batteryCapacity = row.VClass === 'Small SUV' ? 18 : 8.8;
-        }
-
-        let efficiencyMilesPerKWh = 0;
-        if (isElectric && row.comb08) {
-          efficiencyMilesPerKWh = parseFloat(row.comb08) / 33.7;
-        }
-
+      if (row.id && row.make && row.model) {
         results.push({
-          id: `${row.year}-${row.make}-${row.model}`,
+          id: row.id,
           year: parseInt(row.year),
           make: row.make,
           model: row.model,
-          vehicleClass: row.VClass || 'Unknown',
-          fuelType: row.fuelType1 || 'Unknown',
-          isElectric,
-          isHybrid,
-          combinedMPG: parseFloat(row.comb08) || 0,
-          co2EmissionsGramPerMile: parseFloat(row.co2TailpipeGpm) || 0,
-          batteryCapacity,
-          efficiencyMilesPerKWh: efficiencyMilesPerKWh || (isElectric ? 4.0 : 0)
+          vehicleClass: row.vehicleClass || 'Unknown',
+          fuelType: row.fuelType || 'Unknown',
+          isElectric: row.isElectric === 'true',
+          isHybrid: row.isHybrid === 'true',
+          combinedMPG: parseFloat(row.combinedMPG) || 0,
+          co2EmissionsGramPerMile: parseFloat(row.co2EmissionsGramPerMile) || 0,
+          batteryCapacity: parseFloat(row.batteryCapacity) || 0,
+          efficiencyMilesPerKWh: parseFloat(row.efficiencyMilesPerKWh) || 0
         });
       }
     })
     .on('end', () => {
       vehicleData = results;
-      console.log(`✅ Loaded ${vehicleData.length} vehicles from EPA dataset`);
+      console.log(`✅ Loaded ${vehicleData.length} vehicles from Indian dataset`);
     })
     .on('error', (error) => {
-      console.error('❌ Error loading EPA data:', error.message);
+      console.error('❌ Error loading vehicle data:', error.message);
       loadSampleData();
     });
 }
@@ -110,20 +94,13 @@ function loadGridData() {
     .on('end', () => {
       console.log(`✅ Loaded ${Object.keys(gridEmissionFactors).length} grid factors`);
     })
-    .on('error', () => loadDefaultGridData());
+    .on('error', (error) => {
+      console.error('❌ Error loading grid data:', error.message);
+      console.log('❌ Grid data loading failed - application cannot continue without grid emission factors');
+      process.exit(1);
+    });
 }
 
-function loadDefaultGridData() {
-  gridEmissionFactors = {
-    'California': { gCO2_per_kWh: 200, year: 2022, source: 'EPA eGRID' },
-    'Texas': { gCO2_per_kWh: 420, year: 2022, source: 'EPA eGRID' },
-    'New York': { gCO2_per_kWh: 280, year: 2022, source: 'EPA eGRID' },
-    'Washington': { gCO2_per_kWh: 120, year: 2022, source: 'EPA eGRID' },
-    'Florida': { gCO2_per_kWh: 390, year: 2022, source: 'EPA eGRID' },
-    'US Average': { gCO2_per_kWh: 390, year: 2022, source: 'EPA eGRID' }
-  };
-  console.log(`✅ Loaded ${Object.keys(gridEmissionFactors).length} default grid factors`);
-}
 
 // Load Battery Data
 function loadBatteryData() {

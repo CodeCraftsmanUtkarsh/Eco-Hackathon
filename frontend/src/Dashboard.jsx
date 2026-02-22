@@ -17,7 +17,7 @@ document.head.appendChild(style);
 const Dashboard = () => {
   const [dailyMiles, setDailyMiles] = useState(30);
   const [yearsOwnership, setYearsOwnership] = useState(10);
-  const [region, setRegion] = useState('California');
+  const [region, setRegion] = useState('Maharashtra');
   const [availableVehicles, setAvailableVehicles] = useState([]);
   const [selectedVehicles, setSelectedVehicles] = useState([]);
   const [carbonResults, setCarbonResults] = useState([]);
@@ -25,6 +25,31 @@ const Dashboard = () => {
   const [gridFactors, setGridFactors] = useState({});
   const [loading, setLoading] = useState(true);
   const [calculating, setCalculating] = useState(false);
+  const [showMoreVehicles, setShowMoreVehicles] = useState(false);
+  const [selectedOtherVehicle, setSelectedOtherVehicle] = useState('');
+
+  // Most frequently purchased cars in India (based on market data)
+  const POPULAR_VEHICLES = [
+    '2024-Maruti-Swift',
+    '2024-Maruti-Baleno',
+    '2024-Hyundai-Creta',
+    '2024-Hyundai-Venue',
+    '2024-Tata-Nexon',
+    '2024-Tata-Punch',
+    '2024-Kia-Seltos',
+    '2024-Honda-City',
+    '2024-Hyundai-Verna',
+    '2024-Toyota-Fortuner',
+    '2024-Mahindra-Thar',
+    '2024-Mahindra-ScorpioN',
+    '2024-Tata-PunchEV',
+    '2024-Tata-NexonEV',
+    '2024-MG-CometEV',
+    '2024-Toyota-CamryHybrid',
+    '2024-Honda-CityHybrid',
+    '2024-Maruti-GrandVitaraHybrid',
+    '2024-Toyota-InnovaHyCross'
+  ];
 
   // Fetch initial data
   useEffect(() => {
@@ -34,7 +59,7 @@ const Dashboard = () => {
 
   const fetchVehicles = async () => {
     try {
-      const response = await fetch(`${API_URL}/vehicles?limit=20`);
+      const response = await fetch(`${API_URL}/vehicles?limit=50`);
       const data = await response.json();
       setAvailableVehicles(data.vehicles);
       // Auto-select first 3 vehicles
@@ -96,6 +121,21 @@ const Dashboard = () => {
     } else {
       setSelectedVehicles([...selectedVehicles, vehicleId]);
     }
+  };
+
+  const handleOtherVehicleSelect = (vehicleId) => {
+    if (vehicleId && !selectedVehicles.includes(vehicleId)) {
+      setSelectedVehicles([...selectedVehicles, vehicleId]);
+      setSelectedOtherVehicle('');
+    }
+  };
+
+  const getPopularVehicles = () => {
+    return availableVehicles.filter(vehicle => POPULAR_VEHICLES.includes(vehicle.id));
+  };
+
+  const getOtherVehicles = () => {
+    return availableVehicles.filter(vehicle => !POPULAR_VEHICLES.includes(vehicle.id));
   };
 
   const getVehicleType = (vehicle) => {
@@ -243,13 +283,13 @@ const Dashboard = () => {
             </div>
           </div>
 
-          {/* Vehicle Selection */}
+          {/* Popular Vehicle Selection */}
           <div style={{ marginTop: '2rem' }}>
             <label style={{ display: 'block', marginBottom: '1rem', color: '#4ECDC4', fontWeight: '600', fontSize: '1.1rem' }}>
-              Select Vehicles to Compare
+              🚗 Popular Vehicles (Most Purchased in India)
             </label>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(200px, 1fr))', gap: '1rem' }}>
-              {availableVehicles.map(vehicle => {
+              {getPopularVehicles().map(vehicle => {
                 const isSelected = selectedVehicles.includes(vehicle.id);
                 const type = getVehicleType(vehicle);
 
@@ -264,7 +304,8 @@ const Dashboard = () => {
                       borderRadius: '12px',
                       color: '#FFFFFF',
                       cursor: 'pointer',
-                      textAlign: 'left'
+                      textAlign: 'left',
+                      transition: 'all 0.3s ease'
                     }}
                   >
                     <div style={{ fontWeight: '600', marginBottom: '0.25rem' }}>
@@ -276,6 +317,75 @@ const Dashboard = () => {
                   </button>
                 );
               })}
+            </div>
+          </div>
+
+          {/* Other Vehicles Dropdown */}
+          <div style={{ marginTop: '2rem' }}>
+            <label style={{ display: 'block', marginBottom: '0.5rem', color: '#4ECDC4', fontWeight: '600' }}>
+              📋 Other Available Vehicles
+            </label>
+            <div style={{ display: 'flex', gap: '1rem', alignItems: 'flex-end' }}>
+              <div style={{ flex: 1 }}>
+                <select
+                  value={selectedOtherVehicle}
+                  onChange={(e) => {
+                    setSelectedOtherVehicle(e.target.value);
+                    if (e.target.value) {
+                      handleOtherVehicleSelect(e.target.value);
+                    }
+                  }}
+                  style={{
+                    width: '100%',
+                    padding: '1rem',
+                    background: 'rgba(255, 255, 255, 0.1)',
+                    border: '2px solid rgba(78, 205, 196, 0.3)',
+                    borderRadius: '12px',
+                    color: '#FFFFFF',
+                    fontSize: '1rem',
+                    cursor: 'pointer',
+                    minHeight: '60px'
+                  }}
+                >
+                  <option value="" style={{ background: '#203A43', color: '#B0BEC5' }}>
+                    🔍 Select a vehicle to compare...
+                  </option>
+                  {getOtherVehicles().map(vehicle => {
+                    const type = getVehicleType(vehicle);
+                    const isSelected = selectedVehicles.includes(vehicle.id);
+                    return (
+                      <option
+                        key={vehicle.id}
+                        value={vehicle.id}
+                        disabled={isSelected}
+                        style={{
+                          background: isSelected ? '#4ECDC4' : '#203A43',
+                          color: isSelected ? '#0F2027' : '#FFFFFF',
+                          padding: '8px',
+                          fontSize: '14px'
+                        }}
+                      >
+                        {isSelected ? '✓ ' : ''}{vehicle.make} {vehicle.model} ({vehicle.fuelType})
+                      </option>
+                    );
+                  })}
+                </select>
+              </div>
+              <button
+                onClick={() => setShowMoreVehicles(!showMoreVehicles)}
+                style={{
+                  padding: '1rem 1.5rem',
+                  background: 'rgba(78, 205, 196, 0.2)',
+                  border: '2px solid rgba(78, 205, 196, 0.3)',
+                  borderRadius: '12px',
+                  color: '#4ECDC4',
+                  cursor: 'pointer',
+                  fontSize: '0.9rem',
+                  fontWeight: '600'
+                }}
+              >
+                {showMoreVehicles ? 'Hide' : 'Show'} All ({getOtherVehicles().length})
+              </button>
             </div>
           </div>
 
@@ -370,22 +480,118 @@ const Dashboard = () => {
                 </div>
               </div>
 
-              <div style={{ background: 'rgba(0, 0, 0, 0.3)', padding: '1.5rem', borderRadius: '12px' }}>
-                <div style={{ fontSize: '0.9rem', color: '#B0BEC5', marginBottom: '1rem' }}>
-                  Breakdown
+              <div style={{ background: 'rgba(0, 0, 0, 0.3)', padding: '2rem', borderRadius: '15px', border: '1px solid rgba(78, 205, 196, 0.2)' }}>
+                <div style={{ fontSize: '1rem', color: '#B0BEC5', marginBottom: '1.5rem', fontWeight: '600' }}>
+                  📊 Lifecycle Emissions Breakdown
                 </div>
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-                  <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                    <span style={{ color: COLORS.manufacturing }}>Manufacturing:</span>
-                    <span>{(recommendation.emissions.manufacturing / 1000).toFixed(1)}t</span>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+                  {/* Manufacturing */}
+                  <div>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.5rem' }}>
+                      <span style={{ color: COLORS.manufacturing, fontWeight: '600' }}>
+                        🏭 Manufacturing
+                      </span>
+                      <span style={{ color: '#FFFFFF', fontWeight: '700' }}>
+                        {(recommendation.emissions.manufacturing / 1000).toFixed(1)}t
+                      </span>
+                    </div>
+                    <div style={{
+                      width: '100%',
+                      height: '8px',
+                      background: 'rgba(255, 255, 255, 0.1)',
+                      borderRadius: '4px',
+                      overflow: 'hidden'
+                    }}>
+                      <div style={{
+                        width: `${(recommendation.emissions.manufacturing / recommendation.emissions.total) * 100}%`,
+                        height: '100%',
+                        background: COLORS.manufacturing,
+                        borderRadius: '4px',
+                        transition: 'width 0.5s ease'
+                      }}></div>
+                    </div>
+                    <div style={{ fontSize: '0.75rem', color: '#B0BEC5', marginTop: '0.25rem' }}>
+                      {((recommendation.emissions.manufacturing / recommendation.emissions.total) * 100).toFixed(1)}% of total
+                    </div>
                   </div>
-                  <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                    <span style={{ color: COLORS.operational }}>Operational:</span>
-                    <span>{(recommendation.emissions.operational / 1000).toFixed(1)}t</span>
+
+                  {/* Operational */}
+                  <div>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.5rem' }}>
+                      <span style={{ color: COLORS.operational, fontWeight: '600' }}>
+                        ⚡ Operational
+                      </span>
+                      <span style={{ color: '#FFFFFF', fontWeight: '700' }}>
+                        {(recommendation.emissions.operational / 1000).toFixed(1)}t
+                      </span>
+                    </div>
+                    <div style={{
+                      width: '100%',
+                      height: '8px',
+                      background: 'rgba(255, 255, 255, 0.1)',
+                      borderRadius: '4px',
+                      overflow: 'hidden'
+                    }}>
+                      <div style={{
+                        width: `${(recommendation.emissions.operational / recommendation.emissions.total) * 100}%`,
+                        height: '100%',
+                        background: COLORS.operational,
+                        borderRadius: '4px',
+                        transition: 'width 0.5s ease'
+                      }}></div>
+                    </div>
+                    <div style={{ fontSize: '0.75rem', color: '#B0BEC5', marginTop: '0.25rem' }}>
+                      {((recommendation.emissions.operational / recommendation.emissions.total) * 100).toFixed(1)}% of total
+                    </div>
                   </div>
-                  <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                    <span style={{ color: COLORS.disposal }}>Disposal:</span>
-                    <span>{(recommendation.emissions.disposal / 1000).toFixed(1)}t</span>
+
+                  {/* Disposal */}
+                  <div>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.5rem' }}>
+                      <span style={{ color: COLORS.disposal, fontWeight: '600' }}>
+                        ♻️ Disposal
+                      </span>
+                      <span style={{ color: '#FFFFFF', fontWeight: '700' }}>
+                        {(recommendation.emissions.disposal / 1000).toFixed(1)}t
+                      </span>
+                    </div>
+                    <div style={{
+                      width: '100%',
+                      height: '8px',
+                      background: 'rgba(255, 255, 255, 0.1)',
+                      borderRadius: '4px',
+                      overflow: 'hidden'
+                    }}>
+                      <div style={{
+                        width: `${(recommendation.emissions.disposal / recommendation.emissions.total) * 100}%`,
+                        height: '100%',
+                        background: COLORS.disposal,
+                        borderRadius: '4px',
+                        transition: 'width 0.5s ease'
+                      }}></div>
+                    </div>
+                    <div style={{ fontSize: '0.75rem', color: '#B0BEC5', marginTop: '0.25rem' }}>
+                      {((recommendation.emissions.disposal / recommendation.emissions.total) * 100).toFixed(1)}% of total
+                    </div>
+                  </div>
+                </div>
+
+                {/* Summary */}
+                <div style={{
+                  marginTop: '1.5rem',
+                  padding: '1rem',
+                  background: 'rgba(78, 205, 196, 0.1)',
+                  borderRadius: '8px',
+                  border: '1px solid rgba(78, 205, 196, 0.3)'
+                }}>
+                  <div style={{ fontSize: '0.85rem', color: '#4ECDC4', fontWeight: '600' }}>
+                    💡 Key Insight
+                  </div>
+                  <div style={{ fontSize: '0.8rem', color: '#B0BEC5', marginTop: '0.5rem' }}>
+                    {recommendation.emissions.operational > recommendation.emissions.manufacturing ?
+                      "Operational emissions dominate this vehicle's lifecycle footprint." :
+                      "Manufacturing emissions are the largest contributor."
+                    }
                   </div>
                 </div>
               </div>
