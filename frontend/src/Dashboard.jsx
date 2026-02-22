@@ -62,9 +62,8 @@ const Dashboard = () => {
       const response = await fetch(`${API_URL}/vehicles?limit=50`);
       const data = await response.json();
       setAvailableVehicles(data.vehicles);
-      // Auto-select first 3 vehicles
-      const defaultSelection = data.vehicles.slice(0, 3).map(v => v.id);
-      setSelectedVehicles(defaultSelection);
+      // Start with no vehicles selected - user must choose manually
+      setSelectedVehicles([]);
       setLoading(false);
     } catch (error) {
       console.error('Error fetching vehicles:', error);
