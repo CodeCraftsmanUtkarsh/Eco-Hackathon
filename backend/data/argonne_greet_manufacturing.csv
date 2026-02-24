@@ -1,0 +1,24 @@
+vehicleClass,bodyManufacturingKgCO2,batteryManufacturingKgCO2_per_kWh,source,year,notes
+Mini,5500,75,Argonne National Laboratory GREET Model,2022,Mini passenger vehicles manufacturing
+Compact Cars,6500,75,Argonne National Laboratory GREET Model,2022,Small passenger vehicles manufacturing
+Midsize Cars,7200,85,Argonne National Laboratory GREET Model,2022,Medium passenger vehicles manufacturing
+Large Cars,8500,95,Argonne National Laboratory GREET Model,2022,Full-size passenger vehicles manufacturing
+Small SUV,8200,90,Argonne National Laboratory GREET Model,2022,Compact SUV manufacturing
+Midsize SUV,9500,95,Argonne National Laboratory GREET Model,2022,Medium SUV manufacturing
+Large SUV,11000,105,Argonne National Laboratory GREET Model,2022,Full-size SUV manufacturing
+Pickup Trucks,12000,110,Argonne National Laboratory GREET Model,2022,Light truck manufacturing
+Electric Motor,800,0,Argonne National Laboratory GREET Model,2022,Electric motor manufacturing
+Power Electronics,600,0,Argonne National Laboratory GREET Model,2022,Power electronics manufacturing
+Battery Pack,0,75,Argonne National Laboratory GREET Model,2022,Battery pack manufacturing (per kWh)
+Thermal System,400,0,Argonne National Laboratory GREET Model,2022,Cooling system manufacturing
+Interior,800,0,Argonne National Laboratory GREET Model,2022,Interior components manufacturing
+Chassis/Frame,1200,0,Argonne National Laboratory GREET Model,2022,Structural components manufacturing
+Glass/Windows,300,0,Argonne National Laboratory GREET Model,2022,Glass and window manufacturing
+Tires,400,0,Argonne National Laboratory GREET Model,2022,Tire manufacturing (4 tires)
+Brakes,350,0,Argonne National Laboratory GREET Model,2022,Braking system manufacturing
+Suspension,450,0,Argonne National Laboratory GREET Model,2022,Suspension system manufacturing
+Exhaust System,200,0,Argonne National Laboratory GREET Model,2022,Exhaust system manufacturing
+Lighting,150,0,Argonne National Laboratory GREET Model,2022,Lighting system manufacturing
+Electronics,500,0,Argonne National Laboratory GREET Model,2022,Vehicle electronics manufacturing
+Paint/Coatings,300,0,Argonne National Laboratory GREET Model,2022,Paint and coatings manufacturing
+Assembly,1000,0,Argonne National Laboratory GREET Model,2022,Final assembly manufacturing
