@@ -1,0 +1,49 @@
+id,year,make,model,vehicleClass,fuelType,isElectric,isHybrid,combinedMPG,co2EmissionsGramPerMile,batteryCapacity,efficiencyMilesPerKWh,source
+EEA-2024-Volkswagen-Golf,2024,Volkswagen,Golf,Compact Cars,Diesel,false,false,52,170,0,0,EEA
+EEA-2024-Volvo-XC40,2024,Volvo,XC40,Small SUV,Electricity,true,false,98,0,78,3.8,EEA
+EEA-2024-BMW-3Series,2024,BMW,3 Series,Midsize Cars,Hybrid,false,true,45,150,12,0,EEA
+EEA-2024-Renault-Clio,2024,Renault,Clio,Supermini,Petrol,false,false,55,180,0,0,EEA
+EEA-2024-Mercedes-C-Class,2024,Mercedes-Benz,C-Class,Upper medium,Diesel,false,false,48,190,0,0,EEA
+EEA-2024-Audi-Q3,2024,Audi,Q3,Small SUV,Hybrid,false,true,42,160,15,0,EEA
+EEA-2024-Tesla-ModelY,2024,Tesla,Model Y,Small SUV,Electricity,true,false,120,0,75,4.2,EEA
+EEA-2024-Peugeot-208,2024,Peugeot,208,Supermini,Electricity,true,false,125,0,50,4.5,EEA
+EEA-2024-Ford-Focus,2024,Ford,Focus,Lower medium,Petrol,false,false,50,165,0,0,EEA
+EEA-2024-Nissan-Leaf,2024,Nissan,Leaf,Compact Cars,Electricity,true,false,110,0,62,4.0,EEA
+EEA-2024-Opel-Corsa,2024,Opel,Corsa,Supermini,Petrol,false,false,48,190,0,0,EEA
+EEA-2024-Fiat-Panda,2024,Fiat,Panda,Mini,Petrol,false,false,45,200,0,0,EEA
+EEA-2024-Seat-Leon,2024,Seat,Leon,Lower medium,Petrol,false,false,52,170,0,0,EEA
+EEA-2024-Skoda-Octavia,2024,Skoda,Octavia,Lower medium,Hybrid,false,true,48,155,13,0,EEA
+EEA-2024-Dacia-Sandero,2024,Dacia,Sandero,Supermini,Petrol,false,false,42,210,0,0,EEA
+EEA-2024-Mini-Cooper,2024,Mini,Cooper,Mini,Petrol,false,false,58,160,0,0,EEA
+EEA-2024-Citroen-C3,2024,Citroen,C3,Supermini,Petrol,false,false,47,185,0,0,EEA
+EEA-2024-Toyota-Yaris,2024,Toyota,Yaris,Supermini,Hybrid,false,true,65,140,8,0,EEA
+EEA-2024-Honda-Jazz,2024,Honda,Jazz,Supermini,Hybrid,false,true,62,145,7,0,EEA
+EEA-2024-Mazda-3,2024,Mazda,3,Lower medium,Petrol,false,false,45,175,0,0,EEA
+EEA-2024-Kia-Ceed,2024,Kia,Ceed,Lower medium,Hybrid,false,true,50,150,11,0,EEA
+EEA-2024-Hyundai-Tucson,2024,Hyundai,Tucson,Small SUV,Hybrid,false,true,44,165,14,0,EEA
+EEA-2024-Volkswagen-Tiguan,2024,Volkswagen,Tiguan,Small SUV,Hybrid,false,true,47,160,12,0,EEA
+EEA-2024-Range-Rover-Evoque,2024,Range Rover,Evoque,Small SUV,Hybrid,false,true,40,180,16,0,EEA
+EEA-2024-BMW-X1,2024,BMW,X1,Small SUV,Electricity,true,false,95,0,64,4.1,EEA
+EEA-2024-Audi-Q4,2024,Audi,Q4,Small SUV,Electricity,true,false,105,0,82,3.9,EEA
+EEA-2024-Mercedes-EQA,2024,Mercedes-Benz,EQA,Small SUV,Electricity,true,false,88,0,70,4.3,EEA
+EEA-2024-Volvo-C40,2024,Volvo,C40,Small SUV,Electricity,true,false,92,0,75,4.0,EEA
+EEA-2024-Porsche-Taycan,2024,Porsche,Taycan,Upper medium,Electricity,true,false,85,0,93,3.2,EEA
+EEA-2024-Jaguar-I-Pace,2024,Jaguar,I-Pace,Small SUV,Electricity,true,false,90,0,84,3.7,EEA
+EEA-2024-Land-Rover-Defender,2024,Land Rover,Defender,Small SUV,Hybrid,false,true,35,200,18,0,EEA
+EEA-2024-Fiat-500e,2024,Fiat,500e,Mini,Electricity,true,false,42,0,24,3.8,EEA
+EEA-2024-Smart-EQ,2024,Smart,EQ,Mini,Electricity,true,false,45,0,17,4.2,EEA
+EEA-2024-Honda-eHR-V,2024,Honda,e:HR-V,Lower medium,Electricity,true,false,78,0,51,4.0,EEA
+EEA-2024-Toyota-bZ4X,2024,Toyota,bZ4X,Lower medium,Electricity,true,false,115,0,71,3.5,EEA
+EEA-2024-Mitsubishi-Outlander,2024,Mitsubishi,Outlander,Small SUV,Hybrid,false,true,38,190,16,0,EEA
+EEA-2024-Nissan-Qashqai,2024,Nissan,Qashqai,Small SUV,Hybrid,false,true,40,175,12,0,EEA
+EEA-2024-Peugeot-2008,2024,Peugeot,2008,Small SUV,Electricity,true,false,80,0,50,4.0,EEA
+EEA-2024-Opel-Mokka,2024,Opel,Mokka,Small SUV,Electricity,true,false,75,0,45,4.2,EEA
+EEA-2024-Citroen-C4,2024,Citroen,C4,Lower medium,Electricity,true,false,85,0,50,4.1,EEA
+EEA-2024-DS-7,2024,DS,7,Lower medium,Electricity,true,false,95,0,58,3.8,EEA
+EEA-2024-Lancia-Ypsilon,2024,Lancia,Ypsilon,Supermini,Hybrid,false,true,55,135,6,0,EEA
+EEA-2024-Alfa-Romeo-Tonale,2024,Alfa Romeo,Tonale,Lower medium,Hybrid,false,true,48,155,11,0,EEA
+EEA-2024-Jeep-Avenger,2024,Jeep,Avenger,Small SUV,Electricity,true,false,70,0,52,4.0,EEA
+EEA-2024-Fiat-600e,2024,Fiat,600e,Mini,Electricity,true,false,42,0,37,3.9,EEA
+EEA-2024-Abarth-500e,2024,Abarth,500e,Mini,Electricity,true,false,42,0,24,3.8,EEA
+EEA-2024-Maserati-Grecale,2024,Maserati,Grecale,Upper medium,Electricity,true,false,105,0,98,3.0,EEA
+EEA-2024-Lotus-Eletre,2024,Lotus,Eletre,Small SUV,Electricity,true,false,102,0,92,3.4,EEA

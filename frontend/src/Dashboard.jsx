@@ -17,7 +17,7 @@ document.head.appendChild(style);
 const Dashboard = () => {
   const [dailyMiles, setDailyMiles] = useState(30);
   const [yearsOwnership, setYearsOwnership] = useState(10);
-  const [region, setRegion] = useState('Maharashtra');
+  const [region, setRegion] = useState('European Average');
   const [availableVehicles, setAvailableVehicles] = useState([]);
   const [selectedVehicles, setSelectedVehicles] = useState([]);
   const [carbonResults, setCarbonResults] = useState([]);
@@ -28,27 +28,40 @@ const Dashboard = () => {
   const [showMoreVehicles, setShowMoreVehicles] = useState(false);
   const [selectedOtherVehicle, setSelectedOtherVehicle] = useState('');
 
-  // Most frequently purchased cars in India (based on market data)
+  // Most frequently purchased cars in Europe (based on market data)
   const POPULAR_VEHICLES = [
-    '2024-Maruti-Swift',
-    '2024-Maruti-Baleno',
-    '2024-Hyundai-Creta',
-    '2024-Hyundai-Venue',
-    '2024-Tata-Nexon',
-    '2024-Tata-Punch',
-    '2024-Kia-Seltos',
-    '2024-Honda-City',
-    '2024-Hyundai-Verna',
-    '2024-Toyota-Fortuner',
-    '2024-Mahindra-Thar',
-    '2024-Mahindra-ScorpioN',
-    '2024-Tata-PunchEV',
-    '2024-Tata-NexonEV',
-    '2024-MG-CometEV',
-    '2024-Toyota-CamryHybrid',
-    '2024-Honda-CityHybrid',
-    '2024-Maruti-GrandVitaraHybrid',
-    '2024-Toyota-InnovaHyCross'
+    'VW-Golf-2024',
+    'VW-Polo-2024',
+    'VW-Passat-2024',
+    'VW-Tiguan-2024',
+    'Renault-Clio-2024',
+    'Renault-Megane-2024',
+    'Renault-Captur-2024',
+    'Peugeot-208-2024',
+    'Peugeot-3008-2024',
+    'Peugeot-2008-2024',
+    'Ford-Fiesta-2024',
+    'Ford-Focus-2024',
+    'Ford-Kuga-2024',
+    'Opel-Corsa-2024',
+    'Opel-Astra-2024',
+    'Opel-Mokka-2024',
+    'Toyota-Yaris-2024',
+    'Toyota-Corolla-2024',
+    'Toyota-RAV4-2024',
+    'Nissan-Qashqai-2024',
+    'Nissan-Juke-2024',
+    'Dacia-Sandero-2024',
+    'Dacia-Duster-2024',
+    'Skoda-Octavia-2024',
+    'Skoda-Fabia-2024',
+    'Mercedes-C-Class-2024',
+    'BMW-3-Series-2024',
+    'Audi-A4-2024',
+    'Volvo-XC40-2024',
+    'Jaguar-E-Pace-2024',
+    'Land-Rover-Evoque-2024',
+    'Mazda-CX-5-2024'
   ];
 
   // Fetch initial data
@@ -130,7 +143,11 @@ const Dashboard = () => {
   };
 
   const getPopularVehicles = () => {
-    return availableVehicles.filter(vehicle => POPULAR_VEHICLES.includes(vehicle.id));
+    const popular = availableVehicles.filter(vehicle => POPULAR_VEHICLES.includes(vehicle.id));
+    console.log('Available vehicles count:', availableVehicles.length);
+    console.log('First few available vehicle IDs:', availableVehicles.slice(0, 5).map(v => v.id));
+    console.log('Popular vehicles count:', popular.length);
+    return popular;
   };
 
   const getOtherVehicles = () => {
@@ -273,7 +290,7 @@ const Dashboard = () => {
                   fontSize: '1.1rem'
                 }}
               >
-                {Object.keys(gridFactors).map(r => (
+                {gridFactors && Object.keys(gridFactors).map(r => (
                   <option key={r} value={r} style={{ background: '#203A43' }}>
                     {r} ({gridFactors[r].gCO2_per_kWh}g CO2/kWh)
                   </option>
@@ -285,37 +302,95 @@ const Dashboard = () => {
           {/* Popular Vehicle Selection */}
           <div style={{ marginTop: '2rem' }}>
             <label style={{ display: 'block', marginBottom: '1rem', color: '#4ECDC4', fontWeight: '600', fontSize: '1.1rem' }}>
-              🚗 Popular Vehicles (Most Purchased in India)
+              🚗 Popular Vehicles
             </label>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(200px, 1fr))', gap: '1rem' }}>
-              {getPopularVehicles().map(vehicle => {
-                const isSelected = selectedVehicles.includes(vehicle.id);
-                const type = getVehicleType(vehicle);
+              {loading ? (
+                <div style={{ gridColumn: '1/-1', textAlign: 'center', padding: '2rem', color: '#B0BEC5' }}>
+                  Loading popular vehicles...
+                </div>
+              ) : getPopularVehicles().length > 0 ? (
+                getPopularVehicles().map(vehicle => {
+                  const isSelected = selectedVehicles.includes(vehicle.id);
+                  const type = getVehicleType(vehicle);
 
-                return (
-                  <button
-                    key={vehicle.id}
-                    onClick={() => toggleVehicle(vehicle.id)}
-                    style={{
-                      padding: '1rem',
-                      background: isSelected ? 'linear-gradient(135deg, rgba(78, 205, 196, 0.3), rgba(0, 217, 255, 0.3))' : 'rgba(255, 255, 255, 0.05)',
-                      border: isSelected ? '2px solid #4ECDC4' : '2px solid rgba(255, 255, 255, 0.1)',
-                      borderRadius: '12px',
-                      color: '#FFFFFF',
-                      cursor: 'pointer',
-                      textAlign: 'left',
-                      transition: 'all 0.3s ease'
-                    }}
-                  >
-                    <div style={{ fontWeight: '600', marginBottom: '0.25rem' }}>
-                      {vehicle.make} {vehicle.model}
-                    </div>
-                    <div style={{ fontSize: '0.85rem', color: COLORS[type], fontWeight: '500' }}>
-                      {type} • {vehicle.year}
-                    </div>
-                  </button>
-                );
-              })}
+                  return (
+                    <button
+                      key={vehicle.id}
+                      onClick={() => toggleVehicle(vehicle.id)}
+                      style={{
+                        padding: '1rem',
+                        background: isSelected ? 'linear-gradient(135deg, rgba(78, 205, 196, 0.3), rgba(0, 217, 255, 0.3))' : 'rgba(255, 255, 255, 0.05)',
+                        border: isSelected ? '2px solid #4ECDC4' : '2px solid rgba(255, 255, 255, 0.1)',
+                        borderRadius: '12px',
+                        color: '#FFFFFF',
+                        cursor: 'pointer',
+                        textAlign: 'left',
+                        transition: 'all 0.3s ease'
+                      }}
+                    >
+                      <div style={{ fontWeight: '600', marginBottom: '0.25rem' }}>
+                        {vehicle.make} {vehicle.model}
+                      </div>
+                      <div style={{ fontSize: '0.85rem', color: COLORS[type], fontWeight: '500' }}>
+                        {type} • {vehicle.year}
+                      </div>
+                      {isSelected && (
+                        <div style={{
+                          position: 'absolute',
+                          top: '0.5rem',
+                          right: '0.5rem',
+                          background: '#4ECDC4',
+                          color: '#0F2027',
+                          borderRadius: '50%',
+                          width: '20px',
+                          height: '20px',
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          fontSize: '0.7rem',
+                          fontWeight: 'bold'
+                        }}>
+                          ✓
+                        </div>
+                      )}
+                    </button>
+                  );
+                })
+              ) : (
+                <div style={{ gridColumn: '1/-1', textAlign: 'center', padding: '2rem', color: '#B0BEC5' }}>
+                  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(200px, 1fr))', gap: '1rem', marginTop: '1rem' }}>
+                    {availableVehicles.slice(0, 15).map(vehicle => {
+                      const isSelected = selectedVehicles.includes(vehicle.id);
+                      const type = getVehicleType(vehicle);
+
+                      return (
+                        <button
+                          key={vehicle.id}
+                          onClick={() => toggleVehicle(vehicle.id)}
+                          style={{
+                            padding: '1rem',
+                            background: isSelected ? 'linear-gradient(135deg, rgba(78, 205, 196, 0.3), rgba(0, 217, 255, 0.3))' : 'rgba(255, 255, 255, 0.05)',
+                            border: isSelected ? '2px solid #4ECDC4' : '2px solid rgba(255, 255, 255, 0.1)',
+                            borderRadius: '12px',
+                            color: '#FFFFFF',
+                            cursor: 'pointer',
+                            textAlign: 'left',
+                            transition: 'all 0.3s ease'
+                          }}
+                        >
+                          <div style={{ fontWeight: '600', marginBottom: '0.25rem' }}>
+                            {vehicle.make} {vehicle.model}
+                          </div>
+                          <div style={{ fontSize: '0.85rem', color: COLORS[type], fontWeight: '500' }}>
+                            {type} • {vehicle.year}
+                          </div>
+                        </button>
+                      );
+                    })}
+                  </div>
+                </div>
+              )}
             </div>
           </div>
 
@@ -673,7 +748,7 @@ const Dashboard = () => {
           </div>
           <div style={{ textAlign: 'right' }}>
             <p style={{ margin: 0, color: '#B0BEC5', fontSize: '0.9rem' }}>Data Sources:</p>
-            <p style={{ margin: '0.25rem 0 0 0', color: '#4ECDC4', fontSize: '0.85rem' }}>EPA • EEA • IVL • Argonne GREET</p>
+            <p style={{ margin: '0.25rem 0 0 0', color: '#4ECDC4', fontSize: '0.85rem' }}>EEA • EPA • IVL • Argonne GREET</p>
           </div>
         </div>
       </footer>

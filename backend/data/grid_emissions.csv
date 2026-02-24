@@ -1,32 +1,32 @@
 region,state,gCO2_per_kWh,year,source,description
-Northern Grid,Northern Grid,820,2024,Central Electricity Authority (CEA),Northern Regional Load Despatch Centre covering Delhi, Punjab, Haryana, Rajasthan, Uttar Pradesh, Uttarakhand, Jammu & Kashmir, Ladakh, Chandigarh, Himachal Pradesh
-Western Grid,Western Grid,950,2024,Central Electricity Authority (CEA),Western Regional Load Despatch Centre covering Gujarat, Madhya Pradesh, Chhattisgarh, Goa, Maharashtra, Dadra & Nagar Haveli and Daman & Diu
-Eastern Grid,Eastern Grid,780,2024,Central Electricity Authority (CEA),Eastern Regional Load Despatch Centre covering West Bengal, Odisha, Bihar, Jharkhand, Sikkim
-Southern Grid,Southern Grid,620,2024,Central Electricity Authority (CEA),Southern Regional Load Despatch Centre covering Andhra Pradesh, Telangana, Karnataka, Kerala, Tamil Nadu, Puducherry
-North Eastern Grid,North Eastern Grid,180,2024,Central Electricity Authority (CEA),North Eastern Regional Load Despatch Centre covering Assam, Arunachal Pradesh, Manipur, Meghalaya, Mizoram, Nagaland, Tripura
-Delhi,Delhi,850,2024,Delhi Electricity Regulatory Commission,Delhi's electricity grid with high fossil fuel dependence
-Maharashtra,Maharashtra,920,2024,Maharashtra State Electricity Distribution Company,Maharashtra's grid with coal-heavy generation
-Karnataka,Karnataka,580,2024,Karnataka Power Corporation,Karnataka with good renewable mix including wind and solar
-Tamil Nadu,Tamil Nadu,650,2024,Tamil Nadu Generation and Distribution Corporation,Tamil Nadu with significant wind power
-Gujarat,Gujarat,880,2024,Gujarat Electricity Regulatory Commission,Gujarat with high solar penetration but also coal
-Rajasthan,Rajasthan,820,2024,Rajasthan Electricity Regulatory Commission,Rajasthan with solar power but desert conditions
-Madhya Pradesh,Madhya Pradesh,980,2024,Madhya Pradesh Electricity Regulatory Commission,Madhya Pradesh with coal-heavy generation
-Uttar Pradesh,Uttar Pradesh,850,2024,Uttar Pradesh Power Corporation,Uttar Pradesh with mixed coal and gas generation
-West Bengal,West Bengal,780,2024,West Bengal State Electricity Distribution Company,West Bengal with coal-based generation
-Andhra Pradesh,Andhra Pradesh,580,2024,Andhra Pradesh State Financial Corporation,Andhra Pradesh with growing renewable energy
-Telangana,Telangana,620,2024,Telangana State Electricity Regulatory Commission,Telangana with nuclear and coal mix
-Kerala,Kerala,550,2024,Kerala State Electricity Board,Kerala with hydro power dominance
-Punjab,Punjab,750,2024,Punjab State Power Corporation,Punjab with thermal power plants
-Haryana,Haryana,800,2024,Haryana Power Utilities,Haryana with coal and gas based generation
-Bihar,Bihar,720,2024,Bihar State Electricity Board,Bihar with coal-based power generation
-Odisha,Odisha,690,2024,Odisha Electricity Regulatory Commission,Odisha with coal and some renewable energy
-Jharkhand,Jharkhand,850,2024,Jharkhand State Electricity Board,Jharkhand with coal-based generation
-Chhattisgarh,Chhattisgarh,930,2024,Chhattisgarh State Power Distribution Company,Chhattisgarh with coal power dominance
-Goa,Goa,680,2024,Goa Electricity Department,Goa with imported power from neighboring states
-Himachal Pradesh,Himachal Pradesh,120,2024,Himachal Pradesh State Electricity Board,Himachal Pradesh with hydro power dominance
-Uttarakhand,Uttarakhand,180,2024,Uttarakhand Power Corporation,Uttarakhand with hydro power generation
-Jammu and Kashmir,Jammu and Kashmir,250,2024,Jammu and Kashmir Power Development Corporation,Jammu and Kashmir with hydro and thermal mix
-Assam,Assam,420,2024,Assam Power Distribution Company,Assam with thermal and some hydro power
-National Average,National Average,720,2024,Central Electricity Authority,India's national average grid emission factor
-Coal-heavy region,Coal-heavy region,950,2024,Estimate,Hypothetical region with high coal dependence
-Renewable-heavy region,Renewable-heavy region,150,2024,Estimate,Hypothetical region with high renewable energy mix
+European Average,European Average,275,2024,European Environment Agency (EEA),European Union average grid emission factor
+Germany,Germany,401,2024,Bundesnetzagentur,Germany's grid with coal and renewable mix
+France,France,85,2024,RTE,France's grid with nuclear dominance
+United Kingdom,United Kingdom,208,2024,National Grid ESO,UK's grid with gas and renewable mix
+Italy,Italy,279,2024,Terna,Italy's grid with gas and renewable mix
+Spain,Spain,174,2024,Red Eléctrica,Spain's grid with high renewable penetration
+Poland,Poland,736,2024,Polskie Sieci Elektroenergetyczne,Poland's grid with coal dominance
+Netherlands,Netherlands,447,2024,TenneT,Netherlands' grid with gas and renewable mix
+Belgium,Belgium,151,2024,Elia,Belgium's grid with nuclear and renewable mix
+Sweden,Sweden,13,2024,Svenska Kraftnät,Sweden's grid with hydro and renewable dominance
+Norway,Norway,27,2024,Statnett,Norway's grid with hydro power dominance
+Denmark,Denmark,136,2024,Energinet,Denmark's grid with wind power dominance
+Finland,Finland,151,2024,Fingrid,Finland's grid with nuclear and renewable mix
+Austria,Austria,179,2024,APG,Austria's grid with hydro and renewable mix
+Switzerland,Switzerland,112,2024,Swissgrid,Switzerland's grid with hydro and nuclear mix
+Portugal,Portugal,286,2024,REN,Portugal's grid with renewable and fossil mix
+Greece,Greece,629,2024,ADMIE,Greece's grid with lignite and renewable mix
+Czech Republic,Czech Republic,535,2024,CEPS,Czech Republic's grid with coal and nuclear mix
+Hungary,Hungary,399,2024,MAVIR,Hungary's grid with gas and coal mix
+Romania,Romania,438,2024,Transelectrica,Romania's grid with coal and renewable mix
+Bulgaria,Bulgaria,547,2024,ESO,Bulgaria's grid with coal dominance
+Croatia,Croatia,258,2024,HOPS,Croatia's grid with hydro and fossil mix
+Slovakia,Slovakia,190,2024,SEPS,Slovakia's grid with nuclear and fossil mix
+Estonia,Estonia,644,2024,Elering,Estonia's grid with oil shale and renewable mix
+Latvia,Latvia,231,2024,Augstsprieguma,Latvia's grid with hydro and fossil mix
+Lithuania,Lithuania,248,2024,Litgrid,Lithuania's grid with fossil and renewable mix
+Ireland,Ireland,355,2024,EirGrid,Ireland's grid with gas and renewable mix
+Luxembourg,Luxembourg,312,2024,Creos,Luxembourg's grid with imported electricity mix
+Slovenia,Slovenia,296,2024,ELES,Slovenia's grid with fossil and renewable mix
+Cyprus,Cyprus,690,2024,Cyprus Transmission System Operator,Cyprus' grid with fossil fuel dominance
+Malta,Malta,447,2024,Enemalta,Malta's grid with fossil fuel dominance

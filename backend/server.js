@@ -14,19 +14,62 @@ let vehicleData = [];
 let gridEmissionFactors = {};
 let batteryEmissionFactors = {};
 let manufacturingEmissions = {};
+let eeaVehicleData = [];
+let epaVehicleData = [];
 
 // Load EPA Data
 function loadEPAData() {
-  const epaFile = path.join(__dirname, 'data/vehicles.csv');
+  const epaFile = path.join(__dirname, 'data/epa_vehicles.csv');
 
   if (!fs.existsSync(epaFile)) {
-    loadSampleData();
-    return;
+    console.log('EPA vehicles file not found, skipping...');
+    return [];
   }
 
   const results = [];
 
   fs.createReadStream(epaFile)
+    .pipe(csv())
+    .on('data', (row) => {
+      if (row.make && row.model) {
+        results.push({
+          id: `EPA-${row.year}-${row.make}-${row.model}`,
+          year: parseInt(row.year),
+          make: row.make,
+          model: row.model,
+          vehicleClass: row.VClass || 'Unknown',
+          fuelType: row.fuelType1 || 'Unknown',
+          isElectric: row.fuelType1 === 'Electricity',
+          isHybrid: row.fuelType1 === 'Gasoline/Hybrid',
+          combinedMPG: parseFloat(row.comb08) || 0,
+          co2EmissionsGramPerMile: parseFloat(row.co2TailpipeGpm) || 0,
+          batteryCapacity: parseFloat(row.batteryCapacity) || 0,
+          efficiencyMilesPerKWh: parseFloat(row.efficiencyMPGe) || 0,
+          source: 'EPA'
+        });
+      }
+    })
+    .on('end', () => {
+      epaVehicleData = results;
+      console.log(`✅ Loaded ${results.length} vehicles from EPA dataset`);
+    })
+    .on('error', (error) => {
+      console.error('Error reading EPA vehicles:', error);
+    });
+}
+
+// Load EEA Data (European Standard)
+function loadEEAData() {
+  const eeaFile = path.join(__dirname, 'data/eea_vehicles.csv');
+
+  if (!fs.existsSync(eeaFile)) {
+    console.log('EEA vehicles file not found, skipping...');
+    return [];
+  }
+
+  const results = [];
+
+  fs.createReadStream(eeaFile)
     .pipe(csv())
     .on('data', (row) => {
       if (row.id && row.make && row.model) {
@@ -42,34 +85,31 @@ function loadEPAData() {
           combinedMPG: parseFloat(row.combinedMPG) || 0,
           co2EmissionsGramPerMile: parseFloat(row.co2EmissionsGramPerMile) || 0,
           batteryCapacity: parseFloat(row.batteryCapacity) || 0,
-          efficiencyMilesPerKWh: parseFloat(row.efficiencyMilesPerKWh) || 0
+          efficiencyMilesPerKWh: parseFloat(row.efficiencyMilesPerKWh) || 0,
+          source: 'EEA'
         });
       }
     })
     .on('end', () => {
-      vehicleData = results;
-      console.log(`✅ Loaded ${vehicleData.length} vehicles from Indian dataset`);
+      eeaVehicleData = results;
+      console.log(`✅ Loaded ${results.length} vehicles from EEA dataset`);
     })
     .on('error', (error) => {
-      console.error('❌ Error loading vehicle data:', error.message);
-      loadSampleData();
+      console.error('Error reading EEA vehicles:', error);
     });
 }
 
-function loadSampleData() {
-  vehicleData = [
-    { id: '2024-Tesla-Model 3', year: 2024, make: 'Tesla', model: 'Model 3', vehicleClass: 'Compact Cars', fuelType: 'Electricity', isElectric: true, isHybrid: false, combinedMPG: 132, co2EmissionsGramPerMile: 0, batteryCapacity: 60, efficiencyMilesPerKWh: 4.2 },
-    { id: '2024-Tesla-Model Y', year: 2024, make: 'Tesla', model: 'Model Y', vehicleClass: 'Small SUV', fuelType: 'Electricity', isElectric: true, isHybrid: false, combinedMPG: 121, co2EmissionsGramPerMile: 0, batteryCapacity: 75, efficiencyMilesPerKWh: 3.8 },
-    { id: '2024-Nissan-Leaf', year: 2024, make: 'Nissan', model: 'Leaf', vehicleClass: 'Compact Cars', fuelType: 'Electricity', isElectric: true, isHybrid: false, combinedMPG: 111, co2EmissionsGramPerMile: 0, batteryCapacity: 62, efficiencyMilesPerKWh: 3.8 },
-    { id: '2024-Chevrolet-Bolt EV', year: 2024, make: 'Chevrolet', model: 'Bolt EV', vehicleClass: 'Compact Cars', fuelType: 'Electricity', isElectric: true, isHybrid: false, combinedMPG: 120, co2EmissionsGramPerMile: 0, batteryCapacity: 65, efficiencyMilesPerKWh: 4.0 },
-    { id: '2024-Toyota-Prius', year: 2024, make: 'Toyota', model: 'Prius', vehicleClass: 'Midsize Cars', fuelType: 'Gasoline/Hybrid', isElectric: false, isHybrid: true, combinedMPG: 56, co2EmissionsGramPerMile: 158, batteryCapacity: 8.8, efficiencyMilesPerKWh: 0 },
-    { id: '2024-Toyota-RAV4 Hybrid', year: 2024, make: 'Toyota', model: 'RAV4 Hybrid', vehicleClass: 'Small SUV', fuelType: 'Gasoline/Hybrid', isElectric: false, isHybrid: true, combinedMPG: 40, co2EmissionsGramPerMile: 222, batteryCapacity: 18.1, efficiencyMilesPerKWh: 0 },
-    { id: '2024-Honda-Civic', year: 2024, make: 'Honda', model: 'Civic', vehicleClass: 'Compact Cars', fuelType: 'Gasoline', isElectric: false, isHybrid: false, combinedMPG: 35, co2EmissionsGramPerMile: 254, batteryCapacity: 0, efficiencyMilesPerKWh: 0 },
-    { id: '2024-Honda-Accord', year: 2024, make: 'Honda', model: 'Accord', vehicleClass: 'Midsize Cars', fuelType: 'Gasoline', isElectric: false, isHybrid: false, combinedMPG: 33, co2EmissionsGramPerMile: 269, batteryCapacity: 0, efficiencyMilesPerKWh: 0 },
-    { id: '2024-Ford-F-150', year: 2024, make: 'Ford', model: 'F-150', vehicleClass: 'Standard Pickup Trucks', fuelType: 'Gasoline', isElectric: false, isHybrid: false, combinedMPG: 20, co2EmissionsGramPerMile: 445, batteryCapacity: 0, efficiencyMilesPerKWh: 0 },
-    { id: '2024-BMW-330i', year: 2024, make: 'BMW', model: '330i', vehicleClass: 'Compact Cars', fuelType: 'Gasoline', isElectric: false, isHybrid: false, combinedMPG: 30, co2EmissionsGramPerMile: 296, batteryCapacity: 0, efficiencyMilesPerKWh: 0 }
-  ];
-  console.log(`✅ Loaded ${vehicleData.length} sample vehicles`);
+// Load all vehicles
+function loadVehicles() {
+  loadEPAData();
+  loadEEAData();
+
+  // Combine both datasets after a short delay to ensure CSV reading completes
+  setTimeout(() => {
+    vehicleData = [...epaVehicleData, ...eeaVehicleData];
+    console.log(`🎯 Total vehicles loaded: ${vehicleData.length}`);
+    console.log(`📊 Data sources: EPA (${epaVehicleData.length}), EEA (${eeaVehicleData.length})`);
+  }, 2000); // Increased delay for CSV reading
 }
 
 // Load Grid Data
@@ -101,28 +141,15 @@ function loadGridData() {
     });
 }
 
-
-// Load Battery Data
-function loadBatteryData() {
-  const batteryFile = path.join(__dirname, 'data/battery_lifecycle.csv');
-
-  if (!fs.existsSync(batteryFile)) {
-    loadDefaultBatteryData();
-    return;
-  }
-
-  fs.createReadStream(batteryFile)
-    .pipe(csv())
-    .on('data', (row) => {
-      batteryEmissionFactors[row.batteryType] = {
-        manufacturingKgCO2_per_kWh: parseFloat(row.manufacturingKgCO2_per_kWh),
-        disposalKgCO2_per_kWh: parseFloat(row.disposalKgCO2_per_kWh)
-      };
-    })
-    .on('end', () => {
-      console.log(`✅ Loaded ${Object.keys(batteryEmissionFactors).length} battery factors`);
-    })
-    .on('error', () => loadDefaultBatteryData());
+function loadDefaultGridData() {
+  gridEmissionFactors = {
+    'Northern Grid': { gCO2_per_kWh: 820, year: 2024, source: 'Central Electricity Authority (CEA)' },
+    'Western Grid': { gCO2_per_kWh: 950, year: 2024, source: 'Central Electricity Authority (CEA)' },
+    'Eastern Grid': { gCO2_per_kWh: 780, year: 2024, source: 'Central Electricity Authority (CEA)' },
+    'Southern Grid': { gCO2_per_kWh: 620, year: 2024, source: 'Central Electricity Authority (CEA)' },
+    'Maharashtra': { gCO2_per_kWh: 750, year: 2024, source: 'Central Electricity Authority (CEA)' }
+  };
+  console.log('✅ Loaded default grid factors');
 }
 
 function loadDefaultBatteryData() {
@@ -131,39 +158,18 @@ function loadDefaultBatteryData() {
     'LFP': { manufacturingKgCO2_per_kWh: 65, disposalKgCO2_per_kWh: 12 },
     'NCA': { manufacturingKgCO2_per_kWh: 80, disposalKgCO2_per_kWh: 16 }
   };
-  console.log(`✅ Loaded ${Object.keys(batteryEmissionFactors).length} default battery factors`);
-}
-
-// Load Manufacturing Data
-function loadManufacturingData() {
-  const mfgFile = path.join(__dirname, 'data/vehicle_manufacturing.csv');
-
-  if (!fs.existsSync(mfgFile)) {
-    loadDefaultManufacturingData();
-    return;
-  }
-
-  fs.createReadStream(mfgFile)
-    .pipe(csv())
-    .on('data', (row) => {
-      manufacturingEmissions[row.vehicleClass] = {
-        bodyManufacturingKgCO2: parseFloat(row.bodyManufacturingKgCO2)
-      };
-    })
-    .on('end', () => {
-      console.log(`✅ Loaded ${Object.keys(manufacturingEmissions).length} manufacturing factors`);
-    })
-    .on('error', () => loadDefaultManufacturingData());
+  console.log('✅ Loaded default battery factors');
 }
 
 function loadDefaultManufacturingData() {
   manufacturingEmissions = {
-    'Compact Cars': { bodyManufacturingKgCO2: 6800 },
-    'Midsize Cars': { bodyManufacturingKgCO2: 7500 },
-    'Small SUV': { bodyManufacturingKgCO2: 8500 },
-    'Standard Pickup Trucks': { bodyManufacturingKgCO2: 9500 }
+    'Compact Cars': { bodyManufacturingKgCO2: 6500 },
+    'Midsize Cars': { bodyManufacturingKgCO2: 7200 },
+    'Small SUV': { bodyManufacturingKgCO2: 8200 },
+    'Midsize SUV': { bodyManufacturingKgCO2: 9500 },
+    'Standard Pickup Trucks': { bodyManufacturingKgCO2: 11000 }
   };
-  console.log(`✅ Loaded ${Object.keys(manufacturingEmissions).length} default manufacturing factors`);
+  console.log('✅ Loaded default manufacturing factors');
 }
 
 // Calculate Lifecycle
@@ -275,15 +281,47 @@ app.post('/api/calculate', (req, res) => {
 
   results.sort((a, b) => a.emissions.total - b.emissions.total);
 
-  res.json({ results, recommendation: results[0] });
+  // Frequently bought European cars for additional recommendations
+  const popularEuropeanCars = [
+    'VW Golf', 'VW Polo', 'VW Passat', 'VW Tiguan',
+    'Renault Clio', 'Renault Megane', 'Renault Captur',
+    'Peugeot 208', 'Peugeot 3008', 'Peugeot 2008',
+    'Ford Fiesta', 'Ford Focus', 'Ford Kuga',
+    'Opel Corsa', 'Opel Astra', 'Opel Mokka',
+    'Toyota Yaris', 'Toyota Corolla', 'Toyota RAV4',
+    'Nissan Qashqai', 'Nissan Juke',
+    'Dacia Sandero', 'Dacia Duster',
+    'Skoda Octavia', 'Skoda Fabia'
+  ];
+
+  // Find popular European cars in our dataset
+  const popularRecommendations = vehicleData
+    .filter(v => popularEuropeanCars.some(popCar =>
+      v.make + ' ' + v.model === popCar ||
+      v.model.includes(popCar.split(' ')[1]) ||
+      v.make === popCar.split(' ')[0]
+    ))
+    .slice(0, 5)
+    .map(v => {
+      const emissions = calculateLifecycle(v, dailyMiles, yearsOwnership, region);
+      return { vehicle: v, emissions, isPopular: true };
+    });
+
+  res.json({
+    results,
+    recommendation: results[0],
+    popularEuropeanCars: popularRecommendations
+  });
 });
 
 // Initialize and Start
 console.log('\n🚗 Carbon-Wise Backend API\n');
-loadEPAData();
+
+// Initialize application
+loadVehicles();
 loadGridData();
-loadBatteryData();
-loadManufacturingData();
+loadDefaultBatteryData();
+loadDefaultManufacturingData();
 
 app.listen(PORT, () => {
   console.log(`\n✅ Server running on http://localhost:${PORT}\n`);

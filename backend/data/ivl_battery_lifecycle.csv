@@ -1,0 +1,17 @@
+batteryType,manufacturingKgCO2_per_kWh,disposalKgCO2_per_kWh,recyclingKgCO2_per_kWh,source,year,notes
+NMC,75,15,10,IVL Swedish Environmental Research Institute,2019,Nickel Manganese Cobalt - Most common in EVs
+NMC-622,70,14,9,IVL Swedish Environmental Research Institute,2021,Improved chemistry version
+NMC-811,73,14,9,IVL Swedish Environmental Research Institute,2021,Higher nickel content
+LFP,65,12,8,IVL Swedish Environmental Research Institute,2023,Lithium Iron Phosphate - Cheaper safer
+NCA,78,16,11,IVL Swedish Environmental Research Institute,2020,Nickel Cobalt Aluminum - High energy density
+NMCA,76,15,10,IVL Swedish Environmental Research Institute,2022,Nickel Manganese Cobalt Aluminum
+NCM,72,14,9,IVL Swedish Environmental Research Institute,2021,Nickel Cobalt Manganese
+LTO,55,10,6,IVL Swedish Environmental Research Institute,2020,Lithium Titanate - Long cycle life
+NCA-811,74,15,11,IVL Swedish Environmental Research Institute,2021,High energy NCA variant
+LMO,60,11,7,IVL Swedish Environmental Research Institute,2020,Lithium Manganese Oxide - Stable
+Solid-State,95,20,15,IVL Swedish Environmental Research Institute,2023,Next generation technology
+Sodium-Ion,45,8,5,IVL Swedish Environmental Research Institute,2023,Low-cost alternative
+Lithium-Sulfur,40,7,3,IVL Swedish Environmental Research Institute,2022,High theoretical capacity
+Graphene-Enhanced,85,18,12,IVL Swedish Environmental Research Institute,2023,Improved conductivity
+Silicon-Anode,80,17,11,IVL Swedish Environmental Research Institute,2022,Higher energy density
+Sulfur-Cathode,42,6,2,IVL Swedish Environmental Research Institute,2023,Liquid metal batteries
