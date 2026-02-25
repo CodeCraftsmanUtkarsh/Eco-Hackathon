@@ -2,7 +2,7 @@
 
 **Team Loop Breakers**: Atharva & Utkarsh
 
-A comprehensive platform that calculates the **true lifecycle carbon footprint** of vehicles, exposing hidden emissions beyond marketing claims.
+A comprehensive platform that calculates **true lifecycle carbon footprint** of vehicles, exposing hidden emissions beyond marketing claims.
 
 ---
 
@@ -11,7 +11,6 @@ A comprehensive platform that calculates the **true lifecycle carbon footprint**
 ### Prerequisites
 - Node.js (v16+)
 - npm or yarn
-- Your downloaded CSV datasets
 
 ---
 
@@ -22,14 +21,25 @@ carbon-wise-app/
 ├── backend/
 │   ├── server.js              # Express API server
 │   ├── package.json
-│   └── data/                  # PUT YOUR CSV FILES HERE
-│       ├── vehicles.csv       # EPA fuel economy dataset
-│       ├── grid_emissions.csv # Grid carbon intensity
-│       ├── battery_lifecycle.csv
-│       └── vehicle_manufacturing.csv
+│   └── data/                  # Dataset files
+│       ├── eea_vehicles.csv       # European vehicle dataset
+│       ├── epa_vehicles.csv       # EPA vehicle dataset
+│       ├── grid_emissions.csv       # Grid carbon intensity
+│       ├── ivl_battery_lifecycle.csv
+│       └── argonne_greet_manufacturing.csv
 │
 └── frontend/
-    ├── CarbonWise.jsx         # Main React component
+    ├── src/
+    │   ├── App.jsx              # Main React app
+    │   ├── Dashboard.jsx         # Vehicle comparison dashboard
+    │   ├── Compare.jsx           # Detailed comparison view
+    │   ├── Insights.jsx          # Analytics and education
+    │   ├── LandingPage.jsx       # Landing page
+    │   ├── Navigation.jsx        # Navigation component
+    │   └── assets/
+    │       └── logo.svg         # Website logo
+    ├── public/
+    │   └── index.html           # HTML template with favicon
     └── package.json
 ```
 
@@ -37,25 +47,7 @@ carbon-wise-app/
 
 ## 🔧 Setup Instructions
 
-### Step 1: Place Your CSV Files
-
-**Copy your downloaded CSV files to the `backend/data/` directory:**
-
-```bash
-cd backend/data/
-
-# Place these files here:
-# - vehicles.csv (EPA dataset you downloaded)
-# - grid_emissions.csv
-# - battery_lifecycle.csv  
-# - vehicle_manufacturing.csv
-```
-
-If you haven't created the CSV files yet, check the sample files already in the `/data` folder - they work out of the box!
-
----
-
-### Step 2: Install Backend Dependencies
+### Step 1: Install Backend Dependencies
 
 ```bash
 cd backend
@@ -69,7 +61,7 @@ This installs:
 
 ---
 
-### Step 3: Start the Backend
+### Step 2: Start Backend
 
 ```bash
 npm start
@@ -79,8 +71,9 @@ You should see:
 ```
 🚗 Carbon-Wise Backend API
 
-✅ Loaded 42,314 vehicles from EPA dataset
-✅ Loaded 6 grid factors
+✅ Loaded X vehicles from EPA dataset
+✅ Loaded Y vehicles from EEA dataset
+✅ Loaded Z grid factors
 ✅ Loaded 3 battery factors
 ✅ Loaded 4 manufacturing factors
 
@@ -93,7 +86,7 @@ Keep this terminal open!
 
 ---
 
-### Step 4: Install Frontend Dependencies
+### Step 3: Install Frontend Dependencies
 
 Open a **new terminal**:
 
@@ -104,20 +97,17 @@ npm install
 
 This installs:
 - `react` - UI framework
+- `react-router-dom` - Navigation
 - `recharts` - Charts/graphs
 - `react-scripts` - Development server
 
 ---
 
-### Step 5: Start the Frontend
+### Step 4: Start Frontend
 
 ```bash
 npm start
 ```
-
-The browser should automatically open to `http://localhost:3000`
-
-**You're now running Carbon-Wise! 🎉**
 
 ---
 
@@ -131,6 +121,7 @@ The browser should automatically open to `http://localhost:3000`
 
 2. **Select Vehicles**:
    - Click vehicle cards to add/remove from comparison
+   - Choose from popular European vehicles or browse complete database
    - Need at least 1 vehicle selected
 
 3. **View Results**:
@@ -159,7 +150,7 @@ The backend provides these REST APIs:
 GET http://localhost:3001/api/health
 
 # Get all vehicles (with filters)
-GET http://localhost:3001/api/vehicles?make=Tesla&year=2024
+GET http://localhost:3001/api/vehicles?make=VW&year=2024
 
 # Get all car makes
 GET http://localhost:3001/api/makes
@@ -170,10 +161,10 @@ GET http://localhost:3001/api/grid-emissions
 # Calculate lifecycle emissions
 POST http://localhost:3001/api/calculate
 {
-  "vehicleIds": ["2024-Tesla-Model 3", "2024-Toyota-Prius"],
+  "vehicleIds": ["VW-Golf-2024", "Tesla-Model-3-2024"],
   "dailyMiles": 30,
   "yearsOwnership": 10,
-  "region": "California"
+  "region": "European Average"
 }
 ```
 
@@ -181,29 +172,34 @@ POST http://localhost:3001/api/calculate
 
 ## 📊 Dataset Sources
 
-### 1. EPA Fuel Economy Data
+### 1. EEA European Vehicle Data
+- **Source**: European Environment Agency
+- **File**: `eea_vehicles.csv`
+- **Contains**: European vehicle specifications and emissions
+
+### 2. EPA Vehicle Data
 - **Source**: https://www.fueleconomy.gov/feg/download.shtml
-- **File**: `vehicles.csv`
+- **File**: `epa_vehicles.csv`
 - **Contains**: 40,000+ vehicles with MPG, emissions, specs
 
-### 2. EPA eGRID (Grid Emissions)
-- **Source**: https://www.epa.gov/egrid/download-data
+### 3. European Grid Emissions
+- **Source**: European electricity grid data
 - **File**: `grid_emissions.csv`
-- **Contains**: CO2 intensity by US region (g/kWh)
+- **Contains**: CO2 intensity by European regions (g/kWh)
 
-### 3. Battery Lifecycle Emissions
+### 4. Battery Lifecycle Emissions
 - **Source**: IVL Swedish Environmental Research (2019)
-- **File**: `battery_lifecycle.csv`
+- **File**: `ivl_battery_lifecycle.csv`
 - **Contains**: Manufacturing & disposal emissions per kWh
 
-### 4. Vehicle Manufacturing
+### 5. Vehicle Manufacturing
 - **Source**: Argonne National Laboratory GREET Model
-- **File**: `vehicle_manufacturing.csv`
+- **File**: `argonne_greet_manufacturing.csv`
 - **Contains**: Body manufacturing emissions by vehicle class
 
 ---
 
-## 🧪 Testing the Setup
+## 🧪 Testing Setup
 
 ### Test Backend
 ```bash
@@ -211,7 +207,7 @@ POST http://localhost:3001/api/calculate
 curl http://localhost:3001/api/health
 
 # Should return:
-# {"status":"OK","vehicles":10,"gridFactors":6}
+# {"status":"OK","vehicles":X,"gridFactors":Y}
 ```
 
 ### Test Frontend
@@ -238,18 +234,6 @@ PORT=3002 npm start
 - Check CORS is enabled (already done in server.js)
 - Check firewall isn't blocking port 3001
 
-### CSV files not loading?
-```bash
-# Check file exists
-ls backend/data/vehicles.csv
-
-# Check file permissions
-chmod 644 backend/data/*.csv
-
-# Check file format (should have headers)
-head backend/data/vehicles.csv
-```
-
 ### No vehicles showing?
 - Backend will use sample data if CSV not found
 - Check browser console for errors (F12)
@@ -260,16 +244,16 @@ head backend/data/vehicles.csv
 ## 💡 Development Tips
 
 ### Add More Vehicles
-Edit `backend/data/vehicles.csv` or download fresh EPA data
+Edit `backend/data/eea_vehicles.csv` or download fresh EEA data
 
 ### Change Grid Regions
-Edit `backend/data/grid_emissions.csv` to add your state/country
+Edit `backend/data/grid_emissions.csv` to add your region/country
 
 ### Customize Calculations
 Edit the `calculateLifecycle()` function in `backend/server.js`
 
 ### Styling Changes
-All styles are inline in `frontend/CarbonWise.jsx` - easy to modify!
+All styles are in `frontend/src/` components - easy to modify!
 
 ---
 
@@ -297,6 +281,7 @@ npm run build
 
 ### Frontend
 - **React 18** - UI framework
+- **React Router** - Navigation
 - **Recharts** - Data visualization
 - **Fetch API** - Backend communication
 
@@ -306,8 +291,8 @@ npm run build
 - **CORS** - Cross-origin support
 
 ### Data Sources
+- **EEA** - European vehicle data
 - **EPA** - Fuel economy & emissions
-- **EEA** - European grid data
 - **IVL** - Battery lifecycle research
 - **Argonne GREET** - Manufacturing emissions
 
@@ -316,7 +301,7 @@ npm run build
 ## 📖 How It Works
 
 1. **User Inputs**: Daily miles, ownership years, region
-2. **Data Loading**: Backend loads EPA vehicles.csv + other CSVs
+2. **Data Loading**: Backend loads EEA + EPA vehicles + other CSVs
 3. **Selection**: User picks vehicles to compare
 4. **Calculation**:
    - Manufacturing = Body + Battery production
@@ -331,14 +316,16 @@ npm run build
 
 ✅ Total Lifecycle Carbon Cost calculator  
 ✅ Manufacturing + Operational + Disposal emissions  
-✅ Grid carbon intensity mapping (regional)  
+✅ European grid carbon intensity mapping  
+✅ Popular European vehicle selection  
 ✅ Personalized recommendations  
-✅ Greenwashing detection  
 ✅ Interactive dashboard with charts  
 ✅ Real-time calculations  
 ✅ Responsive design  
 ✅ RESTful API backend  
-✅ EPA dataset integration  
+✅ EEA + EPA dataset integration  
+✅ Professional navigation with logo  
+✅ Favicon for browser tabs  
 
 ---
 
@@ -348,6 +335,7 @@ npm run build
 - Backend falls back gracefully if files are missing
 - Frontend updates in real-time as you change inputs
 - All calculations based on peer-reviewed research
+- Vehicle IDs use format: Make-Model-Year (e.g., VW-Golf-2024)
 
 ---
 
@@ -355,7 +343,7 @@ npm run build
 
 To add features:
 1. Backend: Edit `server.js` to add API endpoints
-2. Frontend: Edit `CarbonWise.jsx` to add UI components
+2. Frontend: Edit React components in `frontend/src/`
 3. Data: Add new CSV files to `backend/data/`
 
 ---
@@ -372,4 +360,4 @@ MIT License - Feel free to use in your projects!
 - Atharva
 - Utkarsh
 
-Built for the Carbon-Wise hackathon challenge! 🌍💚
+Built for Carbon-Wise hackathon challenge! 🌍💚
