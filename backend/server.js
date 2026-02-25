@@ -192,7 +192,6 @@ function calculateLifecycle(vehicle, dailyMiles, yearsOwnership, region) {
     // Pure EV vehicles: Use grid electricity calculation
     const gridFactor = gridEmissionFactors[region] || gridEmissionFactors['US Average'] || gridEmissionFactors['National'];
     if (!gridFactor || !gridFactor.gCO2_per_kWh) {
-      console.error(`Grid factor not found for region: ${region}`);
       return {
         manufacturing: 0,
         operational: 0,
@@ -266,7 +265,6 @@ app.post('/api/calculate', (req, res) => {
 
     const emissions = calculateLifecycle(vehicle, dailyMiles, yearsOwnership, region);
     if (emissions.error) {
-      console.error(`Calculation error for vehicle ${id}:`, emissions.error);
       return null;
     }
     return { vehicle, emissions };

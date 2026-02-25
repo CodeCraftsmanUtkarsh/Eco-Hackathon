@@ -14,30 +14,30 @@ const Navigation = ({ hasComparisonData }) => {
             <span className="brand-text">Carbon-Wise</span>
           </Link>
         </div>
-        
+
         <div className="nav-menu">
-          <Link 
-            to="/" 
+          <Link
+            to="/"
             className={`nav-link ${location.pathname === '/' ? 'active' : ''}`}
           >
             Home
           </Link>
-          <Link 
-            to="/dashboard" 
+          <Link
+            to="/dashboard"
             className={`nav-link ${location.pathname === '/dashboard' ? 'active' : ''}`}
           >
             Dashboard
           </Link>
           {hasComparisonData && (
-            <Link 
-              to="/compare" 
+            <Link
+              to="/compare"
               className={`nav-link ${location.pathname === '/compare' ? 'active' : ''}`}
             >
               Compare
             </Link>
           )}
-          <Link 
-            to="/insights" 
+          <Link
+            to="/insights"
             className={`nav-link ${location.pathname === '/insights' ? 'active' : ''}`}
           >
             Insights
