@@ -168,6 +168,9 @@ function loadDefaultManufacturingData() {
     'Small SUV': { bodyManufacturingKgCO2: 8200 },
     'Midsize SUV': { bodyManufacturingKgCO2: 9500 },
     'Standard Pickup Trucks': { bodyManufacturingKgCO2: 11000 }
+
+
+    
   };
   console.log('✅ Loaded default manufacturing factors');
 }
@@ -259,7 +262,10 @@ app.get('/api/grid-emissions', (req, res) => {
 app.post('/api/calculate', (req, res) => {
   const { vehicleIds, dailyMiles, yearsOwnership, region } = req.body;
 
-  const results = vehicleIds.map(id => {
+  // Deduplicate vehicleIds to prevent duplicate results
+  const uniqueVehicleIds = [...new Set(vehicleIds)];
+
+  const results = uniqueVehicleIds.map(id => {
     const vehicle = vehicleData.find(v => v.id === id);
     if (!vehicle) return null;
 

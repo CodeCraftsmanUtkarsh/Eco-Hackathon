@@ -1,0 +1,4 @@
+Calculations:
+1. Lifecycle Miles: daily miles * 365 * years of Ownership
+2. Manufacturing: (Base Vehicle + Battery Manufacturing)
+3. Operational: 
