@@ -21,6 +21,25 @@ const Compare = () => {
     ICE: '#FF6B9D'
   };
 
+  // Color palette for pie chart - distinct colors for each vehicle
+  const PIE_COLORS = [
+    '#00D9FF', // Bright cyan
+    '#FFE66D', // Bright yellow
+    '#FF6B9D', // Hot pink
+    '#4ECDC4', // Teal
+    '#95E1D3', // Mint
+    '#F38181', // Coral
+    '#AA96DA', // Lavender
+    '#FCBAD3', // Light pink
+    '#A8D8EA', // Light blue
+    '#FFE5B4', // Peach
+    '#B4E7FF', // Sky blue
+    '#FFD6A5', // Light orange
+    '#CAFFBF', // Light green
+    '#FFB4B4', // Light red
+    '#FFC6FF'  // Light magenta
+  ];
+
   if (!carbonResults || carbonResults.length === 0) {
     return (
       <div style={{
@@ -213,83 +232,82 @@ const Compare = () => {
           </div>
         </section>
 
-        {/* Comparison Charts */}
+        {/* Bar Chart Section */}
+        <section style={{
+          background: '#1a1a1a',
+          border: '1px solid rgba(78, 205, 196, 0.1)',
+          borderRadius: '20px',
+          padding: '2.5rem',
+          marginBottom: '3rem'
+        }}>
+          <h2 style={{ fontSize: '1.8rem', marginBottom: '2rem' }}>Lifecycle Emissions Breakdown</h2>
+          <ResponsiveContainer width="100%" height={650}>
+            <BarChart data={carbonResults.map(r => ({
+              name: `${r.vehicle.make} ${r.vehicle.model}`,
+              manufacturing: r.emissions.manufacturing,
+              operational: r.emissions.operational,
+              disposal: r.emissions.disposal
+            }))} margin={{ top: 20, right: 30, left: 80, bottom: 200 }}>
+              <CartesianGrid strokeDasharray="3 3" stroke="rgba(255, 255, 255, 0.1)" />
+              <XAxis dataKey="name" stroke="#B0BEC5" tick={{ fill: '#B0BEC5', angle: -45, textAnchor: 'end', height: 120 }} />
+              <YAxis stroke="#B0BEC5" tick={{ fill: '#B0BEC5' }} label={{ value: 'kg CO2', angle: -90, position: 'left', offset: 10, fill: '#B0BEC5' }} />
+              <Tooltip
+                contentStyle={{
+                  background: 'rgba(10, 10, 10, 0.95)',
+                  border: '1px solid rgba(78, 205, 196, 0.5)',
+                  borderRadius: '8px',
+                  color: '#FFFFFF'
+                }}
+                labelStyle={{ color: '#FFFFFF' }}
+                itemStyle={{ color: '#FFFFFF' }}
+              />
+              <Legend verticalAlign="top" height={36} />
+              <Bar dataKey="manufacturing" stackId="a" fill={COLORS.manufacturing} name="Manufacturing" />
+              <Bar dataKey="operational" stackId="a" fill={COLORS.operational} name="Operational" />
+              <Bar dataKey="disposal" stackId="a" fill={COLORS.disposal} name="Disposal" />
+            </BarChart>
+          </ResponsiveContainer>
+        </section>
+
+        {/* Pie Chart Section */}
         <section style={{
           background: '#1a1a1a',
           border: '1px solid rgba(78, 205, 196, 0.1)',
           borderRadius: '20px',
           padding: '2.5rem'
         }}>
-          <h2 style={{ fontSize: '1.8rem', marginBottom: '2rem' }}>Visual Comparison</h2>
-
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(500px, 1fr))', gap: '2rem' }}>
-            {/* Stacked Bar Chart */}
-            <div>
-              <h3 style={{ fontSize: '1.2rem', marginBottom: '1rem', color: '#4ECDC4' }}>Lifecycle Emissions Breakdown</h3>
-              <ResponsiveContainer width="100%" height={300}>
-                <BarChart data={carbonResults.map(r => ({
+          <h2 style={{ fontSize: '1.8rem', marginBottom: '2rem' }}>Total Emissions Distribution</h2>
+          <ResponsiveContainer width="100%" height={500}>
+            <PieChart>
+              <Pie
+                data={carbonResults.map(r => ({
                   name: `${r.vehicle.make} ${r.vehicle.model}`,
-                  manufacturing: r.emissions.manufacturing,
-                  operational: r.emissions.operational,
-                  disposal: r.emissions.disposal
-                }))}>
-                  <CartesianGrid strokeDasharray="3 3" stroke="rgba(255, 255, 255, 0.1)" />
-                  <XAxis dataKey="name" stroke="#B0BEC5" tick={{ fill: '#B0BEC5' }} />
-                  <YAxis stroke="#B0BEC5" tick={{ fill: '#B0BEC5' }} label={{ value: 'kg CO2', angle: -90, position: 'insideLeft', fill: '#B0BEC5' }} />
-                  <Tooltip
-                    contentStyle={{
-                      background: 'rgba(10, 10, 10, 0.95)',
-                      border: '1px solid rgba(78, 205, 196, 0.5)',
-                      borderRadius: '8px',
-                      color: '#FFFFFF'
-                    }}
-                    labelStyle={{ color: '#FFFFFF' }}
-                    itemStyle={{ color: '#FFFFFF' }}
-                  />
-                  <Legend />
-                  <Bar dataKey="manufacturing" stackId="a" fill={COLORS.manufacturing} name="Manufacturing" />
-                  <Bar dataKey="operational" stackId="a" fill={COLORS.operational} name="Operational" />
-                  <Bar dataKey="disposal" stackId="a" fill={COLORS.disposal} name="Disposal" />
-                </BarChart>
-              </ResponsiveContainer>
-            </div>
-
-            {/* Pie Chart */}
-            <div>
-              <h3 style={{ fontSize: '1.2rem', marginBottom: '1rem', color: '#4ECDC4' }}>Total Emissions Distribution</h3>
-              <ResponsiveContainer width="100%" height={300}>
-                <PieChart>
-                  <Pie
-                    data={carbonResults.map(r => ({
-                      name: `${r.vehicle.make} ${r.vehicle.model}`,
-                      value: r.emissions.total
-                    }))}
-                    cx="50%"
-                    cy="50%"
-                    labelLine={false}
-                    label={({ name, percent }) => `${name}: ${(percent * 100).toFixed(0)}%`}
-                    outerRadius={80}
-                    fill="#8884d8"
-                    dataKey="value"
-                  >
-                    {carbonResults.map((entry, index) => (
-                      <Cell key={`cell-${index}`} fill={['#00D9FF', '#FFE66D', '#FF6B9D'][index % 3]} />
-                    ))}
-                  </Pie>
-                  <Tooltip
-                    contentStyle={{
-                      background: 'rgba(10, 10, 10, 0.95)',
-                      border: '1px solid rgba(78, 205, 196, 0.5)',
-                      borderRadius: '8px',
-                      color: '#FFFFFF'
-                    }}
-                    labelStyle={{ color: '#FFFFFF' }}
-                    itemStyle={{ color: '#FFFFFF' }}
-                  />
-                </PieChart>
-              </ResponsiveContainer>
-            </div>
-          </div>
+                  value: r.emissions.total
+                }))}
+                cx="50%"
+                cy="50%"
+                labelLine={false}
+                label={({ name, percent }) => `${name}: ${(percent * 100).toFixed(0)}%`}
+                outerRadius={100}
+                fill="#8884d8"
+                dataKey="value"
+              >
+                {carbonResults.map((entry, index) => (
+                  <Cell key={`cell-${index}`} fill={PIE_COLORS[index % PIE_COLORS.length]} />
+                ))}
+              </Pie>
+              <Tooltip
+                contentStyle={{
+                  background: 'rgba(10, 10, 10, 0.95)',
+                  border: '1px solid rgba(78, 205, 196, 0.5)',
+                  borderRadius: '8px',
+                  color: '#FFFFFF'
+                }}
+                labelStyle={{ color: '#FFFFFF' }}
+                itemStyle={{ color: '#FFFFFF' }}
+              />
+            </PieChart>
+          </ResponsiveContainer>
         </section>
       </main>
     </div>
