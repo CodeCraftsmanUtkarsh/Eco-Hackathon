@@ -104,39 +104,39 @@ const Insights = () => {
 
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '1.5rem' }}>
             <div className="region-card california">
-              <h4>California</h4>
+              <h4>Sweden</h4>
               <div className="grid-factor">
-                <span className="factor-value">195</span>
+                <span className="factor-value">13</span>
                 <span className="factor-unit">g CO2/kWh</span>
               </div>
-              <p>Best for EVs with clean energy grid</p>
+              <p>Excellent for EVs with hydro and renewable dominance</p>
             </div>
 
             <div className="region-card texas">
-              <h4>Texas</h4>
+              <h4>France</h4>
               <div className="grid-factor">
-                <span className="factor-value">450</span>
+                <span className="factor-value">85</span>
                 <span className="factor-unit">g CO2/kWh</span>
               </div>
-              <p>Moderate grid mix affects EV benefits</p>
+              <p>Very clean grid with nuclear power dominance</p>
             </div>
 
             <div className="region-card newyork">
-              <h4>New York</h4>
+              <h4>Germany</h4>
               <div className="grid-factor">
-                <span className="factor-value">300</span>
+                <span className="factor-value">401</span>
                 <span className="factor-unit">g CO2/kWh</span>
               </div>
-              <p>Good balance of energy sources</p>
+              <p>Moderate grid with coal and renewable mix</p>
             </div>
 
             <div className="region-card florida">
-              <h4>Florida</h4>
+              <h4>Poland</h4>
               <div className="grid-factor">
-                <span className="factor-value">550</span>
+                <span className="factor-value">736</span>
                 <span className="factor-unit">g CO2/kWh</span>
               </div>
-              <p>Higher impact due to fossil fuels</p>
+              <p>Higher impact due to coal dominance - DIRTIEST IN EU</p>
             </div>
           </div>
         </section>
